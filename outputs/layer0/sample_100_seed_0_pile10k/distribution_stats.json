@@ -8,7 +8,25 @@
     "population_standard_deviation": 0.019587822552928246,
     "population_skewness": -52.984927935907564,
     "pearson_kurtosis": 7316.0535455560985,
-    "excess_kurtosis": 7313.0535455560985
+    "excess_kurtosis": 7313.0535455560985,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -0.0004520416259765625,
+      "mad_estimate": 0.0024662017822265625,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.3171537109375221,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.08984375,
+      "negative_extreme_score": 1342.9752513534415,
+      "positive_extreme_score": 68.29156999226605,
+      "negative_tail_to_shoulder_ratio": 10.457942850676604,
+      "positive_tail_to_shoulder_ratio": 1.8652119727086458,
+      "negative_gap_score": 6.335653518948183,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 460,
@@ -19,7 +37,25 @@
     "population_standard_deviation": 0.016873531660069347,
     "population_skewness": -34.541559696588735,
     "pearson_kurtosis": 11606.362988495222,
-    "excess_kurtosis": 11603.362988495222
+    "excess_kurtosis": 11603.362988495222,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -0.000339508056640625,
+      "mad_estimate": 0.002361297607421875,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.408203125,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.08935546875,
+      "negative_extreme_score": 731.048465266559,
+      "positive_extreme_score": 68.17609046849758,
+      "negative_tail_to_shoulder_ratio": 4.232353463837111,
+      "positive_tail_to_shoulder_ratio": 1.794794369072428,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 2.0678513731825525,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 1326,
@@ -30,7 +66,25 @@
     "population_standard_deviation": 0.014615234898965431,
     "population_skewness": -8.799336144742556,
     "pearson_kurtosis": 356.45715633922435,
-    "excess_kurtosis": 353.45715633922435
+    "excess_kurtosis": 353.45715633922435,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -0.000370025634765625,
+      "mad_estimate": 0.002864837646484375,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.28515625,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.10302734375,
+      "negative_extreme_score": 357.1118508655126,
+      "positive_extreme_score": 79.21304926764314,
+      "negative_tail_to_shoulder_ratio": 3.5924050632911393,
+      "positive_tail_to_shoulder_ratio": 2.1947611141855745,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 2.045272969374168,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 2040,
@@ -41,7 +95,25 @@
     "population_standard_deviation": 0.026413319433518778,
     "population_skewness": -1.0316234450566044,
     "pearson_kurtosis": 185.59420176324195,
-    "excess_kurtosis": 182.59420176324195
+    "excess_kurtosis": 182.59420176324195,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -0.00012302398681640625,
+      "mad_estimate": 0.0026407241821289062,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.5234375,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.451171875,
+      "negative_extreme_score": 551.7078367641748,
+      "positive_extreme_score": 613.9288551823763,
+      "negative_tail_to_shoulder_ratio": 2.78400138500369,
+      "positive_tail_to_shoulder_ratio": 3.592366715481481,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 2.958468761285663,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 2063,
@@ -52,7 +124,25 @@
     "population_standard_deviation": 0.013840902065476368,
     "population_skewness": -4.7394944349908545,
     "pearson_kurtosis": 399.90543021769724,
-    "excess_kurtosis": 396.90543021769724
+    "excess_kurtosis": 396.90543021769724,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 3.838539123535156e-05,
+      "mad_estimate": 0.0026776790618896484,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.3034818359375221,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.12732685546870925,
+      "negative_extreme_score": 368.3662185023595,
+      "positive_extreme_score": 460.9725759059745,
+      "negative_tail_to_shoulder_ratio": 3.2497555058213208,
+      "positive_tail_to_shoulder_ratio": 9.697159639498281,
+      "negative_gap_score": 2.917638678657288,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 2416,
@@ -63,7 +153,25 @@
     "population_standard_deviation": 0.0017587877327188788,
     "population_skewness": -0.3147698703152646,
     "pearson_kurtosis": 18.13124298514688,
-    "excess_kurtosis": 15.13124298514688
+    "excess_kurtosis": 15.13124298514688,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -2.9087066650390625e-05,
+      "mad_estimate": 0.0004544258117675781,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.0177001953125,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.01708984375,
+      "negative_extreme_score": 83.74711437565583,
+      "positive_extreme_score": 68.697796432319,
+      "negative_tail_to_shoulder_ratio": 2.1536199033972854,
+      "positive_tail_to_shoulder_ratio": 1.8235982284616028,
+      "negative_gap_score": 1.074501573976915,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 2636,
@@ -74,7 +182,25 @@
     "population_standard_deviation": 0.015873096867969956,
     "population_skewness": -2.6724934522354213,
     "pearson_kurtosis": 124.57842408614981,
-    "excess_kurtosis": 121.57842408614981
+    "excess_kurtosis": 121.57842408614981,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 0.00016689300537109375,
+      "mad_estimate": 0.0029439926147460938,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.341796875,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.22265625,
+      "negative_extreme_score": 247.51506316812439,
+      "positive_extreme_score": 217.54745707806933,
+      "negative_tail_to_shoulder_ratio": 2.1308763856933695,
+      "positive_tail_to_shoulder_ratio": 2.8786010964564483,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 2988,
@@ -85,7 +211,25 @@
     "population_standard_deviation": 0.009271717062048004,
     "population_skewness": 1.931277883907995,
     "pearson_kurtosis": 24.66944961611954,
-    "excess_kurtosis": 21.66944961611954
+    "excess_kurtosis": 21.66944961611954,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -9.201467037200928e-07,
+      "mad_estimate": 0.00302032008767128,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.05810546875,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.12079233398435463,
+      "negative_extreme_score": 34.59609058649836,
+      "positive_extreme_score": 79.05468442611324,
+      "negative_tail_to_shoulder_ratio": 1.7983319699581741,
+      "positive_tail_to_shoulder_ratio": 1.9766869691054303,
+      "negative_gap_score": 0.16166539831096957,
+      "positive_gap_score": 0.9699923898658174,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 3002,
@@ -96,7 +240,25 @@
     "population_standard_deviation": 0.0257709861752644,
     "population_skewness": -3.3375312968007265,
     "pearson_kurtosis": 89.35008796002576,
-    "excess_kurtosis": 86.35008796002576
+    "excess_kurtosis": 86.35008796002576,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -0.000530242919921875,
+      "mad_estimate": 0.004169464111328125,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.4921875,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.263671875,
+      "negative_extreme_score": 272.50228728270815,
+      "positive_extreme_score": 111.14638609332114,
+      "negative_tail_to_shoulder_ratio": 2.3109361058307796,
+      "positive_tail_to_shoulder_ratio": 1.7540391862429432,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 0.9368709972552608,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 3056,
@@ -107,7 +269,25 @@
     "population_standard_deviation": 0.005078368861347814,
     "population_skewness": 0.7069589889387208,
     "pearson_kurtosis": 25.64731755021006,
-    "excess_kurtosis": 22.64731755021006
+    "excess_kurtosis": 22.64731755021006,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 1.519918441772461e-05,
+      "mad_estimate": 0.0011749863624572754,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.05126953125,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.060302734375,
+      "negative_extreme_score": 91.229087404251,
+      "positive_extreme_score": 104.29346116775731,
+      "negative_tail_to_shoulder_ratio": 2.090153007560305,
+      "positive_tail_to_shoulder_ratio": 2.0326489410820234,
+      "negative_gap_score": 0.4155633338406128,
+      "positive_gap_score": 0.4155633338406128,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 3107,
@@ -118,7 +298,25 @@
     "population_standard_deviation": 0.02916986162998527,
     "population_skewness": 18.032662550089263,
     "pearson_kurtosis": 722.3287136953215,
-    "excess_kurtosis": 719.3287136953215
+    "excess_kurtosis": 719.3287136953215,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 0.0004673004150390625,
+      "mad_estimate": 0.0033168792724609375,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.17322529296876105,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.872588671874837,
+      "negative_extreme_score": 87.87866589994249,
+      "positive_extreme_score": 692.3398504887866,
+      "negative_tail_to_shoulder_ratio": 1.6781540291183479,
+      "positive_tail_to_shoulder_ratio": 2.6331285698699545,
+      "negative_gap_score": 0.5888441633122484,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 3236,
@@ -129,7 +327,25 @@
     "population_standard_deviation": 0.05466106744313153,
     "population_skewness": 104.77463452947535,
     "pearson_kurtosis": 14268.500359275387,
-    "excess_kurtosis": 14265.500359275387
+    "excess_kurtosis": 14265.500359275387,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 0.00106048583984375,
+      "mad_estimate": 0.00380706787109375,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.10302734375,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.9410683593741851,
+      "negative_extreme_score": 45.6813627254509,
+      "positive_extreme_score": 2527.913827655311,
+      "negative_tail_to_shoulder_ratio": 1.6708202008355932,
+      "positive_tail_to_shoulder_ratio": 10.238147769949041,
+      "negative_gap_score": 0.5130260521042084,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 3299,
@@ -140,7 +356,25 @@
     "population_standard_deviation": 0.006606297984530191,
     "population_skewness": 0.5361974752690447,
     "pearson_kurtosis": 16.608014138701716,
-    "excess_kurtosis": 13.608014138701716
+    "excess_kurtosis": 13.608014138701716,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 2.562999725341797e-05,
+      "mad_estimate": 0.001919865608215332,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.059814453125,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.06494140625,
+      "negative_extreme_score": 60.28978578081341,
+      "positive_extreme_score": 80.60956224774915,
+      "negative_tail_to_shoulder_ratio": 1.934293540514966,
+      "positive_tail_to_shoulder_ratio": 2.3840048627039057,
+      "negative_gap_score": 0.5086619062402981,
+      "positive_gap_score": 0.5086619062402981,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 3573,
@@ -151,7 +385,25 @@
     "population_standard_deviation": 0.011930314899672313,
     "population_skewness": 0.1603721782272649,
     "pearson_kurtosis": 20.567106076478968,
-    "excess_kurtosis": 17.567106076478968
+    "excess_kurtosis": 17.567106076478968,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -7.343292236328125e-05,
+      "mad_estimate": 0.0032835006713867188,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.11835092773438052,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.11737436523435463,
+      "negative_extreme_score": 104.07290153935521,
+      "positive_extreme_score": 66.49462677897182,
+      "negative_tail_to_shoulder_ratio": 2.889167061077429,
+      "positive_tail_to_shoulder_ratio": 1.858997402241846,
+      "negative_gap_score": 0.5948300900377578,
+      "positive_gap_score": 0.5948300900377578,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 4089,
@@ -162,7 +414,25 @@
     "population_standard_deviation": 0.007006678545576999,
     "population_skewness": 1.0444633722764523,
     "pearson_kurtosis": 25.61145583520646,
-    "excess_kurtosis": 22.61145583520646
+    "excess_kurtosis": 22.61145583520646,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 9.655952453613281e-06,
+      "mad_estimate": 0.0016347169876098633,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.06298828125,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.09003061523435463,
+      "negative_extreme_score": 71.69262743382193,
+      "positive_extreme_score": 107.82286881061766,
+      "negative_tail_to_shoulder_ratio": 1.8603332292583237,
+      "positive_tail_to_shoulder_ratio": 1.9579870810484017,
+      "negative_gap_score": 0.8960840078757384,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 4563,
@@ -173,7 +443,25 @@
     "population_standard_deviation": 0.04183433654426574,
     "population_skewness": -49.96204532331318,
     "pearson_kurtosis": 4743.6484537880015,
-    "excess_kurtosis": 4740.6484537880015
+    "excess_kurtosis": 4740.6484537880015,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -0.002105712890625,
+      "mad_estimate": 0.0035247802734375,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -1.03125,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.07470703125,
+      "negative_extreme_score": 2011.939393939394,
+      "positive_extreme_score": 41.74025974025974,
+      "negative_tail_to_shoulder_ratio": 6.890816356789135,
+      "positive_tail_to_shoulder_ratio": 1.9153754469606674,
+      "negative_gap_score": 8.865800865800866,
+      "positive_gap_score": 0.27705627705627706,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 4579,
@@ -184,7 +472,25 @@
     "population_standard_deviation": 0.049110696058343714,
     "population_skewness": -2.323668899664436,
     "pearson_kurtosis": 124.75269268183054,
-    "excess_kurtosis": 121.75269268183054
+    "excess_kurtosis": 121.75269268183054,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 0.00021839141845703125,
+      "mad_estimate": 0.004969596862792969,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -1.0,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.751494921874837,
+      "negative_extreme_score": 452.79696795240835,
+      "positive_extreme_score": 364.67376703127997,
+      "negative_tail_to_shoulder_ratio": 2.249727070332426,
+      "positive_tail_to_shoulder_ratio": 2.4122696971255464,
+      "negative_gap_score": 6.2882364229514485,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 4669,
@@ -195,7 +501,25 @@
     "population_standard_deviation": 0.0044816489635701,
     "population_skewness": -0.9986624272276768,
     "pearson_kurtosis": 19.999554984999353,
-    "excess_kurtosis": 16.999554984999353
+    "excess_kurtosis": 16.999554984999353,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 2.7060508728027344e-05,
+      "mad_estimate": 0.0011638402938842773,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.05233952636719026,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.0361328125,
+      "negative_extreme_score": 77.84850967940183,
+      "positive_extreme_score": 62.48868175765646,
+      "negative_tail_to_shoulder_ratio": 1.7301725735612825,
+      "positive_tail_to_shoulder_ratio": 2.0142731207717985,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 1.67817269281983,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 4815,
@@ -206,7 +530,25 @@
     "population_standard_deviation": 0.02910539139000524,
     "population_skewness": 2.5377913033225967,
     "pearson_kurtosis": 61.563248596846954,
-    "excess_kurtosis": 58.563248596846954
+    "excess_kurtosis": 58.563248596846954,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 7.486343383789062e-05,
+      "mad_estimate": 0.00840902328491211,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.2451171875,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.509307421874837,
+      "negative_extreme_score": 62.48829033172668,
+      "positive_extreme_score": 146.31828749645592,
+      "negative_tail_to_shoulder_ratio": 2.1430771773903405,
+      "positive_tail_to_shoulder_ratio": 2.4161728588858846,
+      "negative_gap_score": 0.23226538134391833,
+      "positive_gap_score": 1.8581230507513466,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 6025,
@@ -217,7 +559,25 @@
     "population_standard_deviation": 0.08972638123206066,
     "population_skewness": 54.16125664856126,
     "pearson_kurtosis": 3136.7208221306246,
-    "excess_kurtosis": 3133.7208221306246
+    "excess_kurtosis": 3133.7208221306246,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 0.0023345947265625,
+      "mad_estimate": 0.0031585693359375,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.07861328125,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 5.3125,
+      "negative_extreme_score": 44.48792270531401,
+      "positive_extreme_score": 2255.0289855072465,
+      "negative_tail_to_shoulder_ratio": 1.735909519321395,
+      "positive_tail_to_shoulder_ratio": 1.3413264675710546,
+      "negative_gap_score": 0.30917874396135264,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 6118,
@@ -228,7 +588,25 @@
     "population_standard_deviation": 0.03329152035577576,
     "population_skewness": -45.98073119899555,
     "pearson_kurtosis": 7840.052931275068,
-    "excess_kurtosis": 7837.052931275068
+    "excess_kurtosis": 7837.052931275068,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -0.0003108978271484375,
+      "mad_estimate": 0.0032749176025390625,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -1.2265625,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.08710092773435463,
+      "negative_extreme_score": 973.2119976703552,
+      "positive_extreme_score": 47.65695981362842,
+      "negative_tail_to_shoulder_ratio": 2.5991314478409855,
+      "positive_tail_to_shoulder_ratio": 1.7854862951848038,
+      "negative_gap_score": 4.771112405358183,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 6205,
@@ -239,7 +617,25 @@
     "population_standard_deviation": 0.003783589828304717,
     "population_skewness": -0.0813107144952819,
     "pearson_kurtosis": 15.130349177600841,
-    "excess_kurtosis": 12.130349177600841
+    "excess_kurtosis": 12.130349177600841,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -4.220008850097656e-05,
+      "mad_estimate": 0.0010035037994384766,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.033935546875,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.0341796875,
+      "negative_extreme_score": 64.67260631979093,
+      "positive_extreme_score": 59.161083392729864,
+      "negative_tail_to_shoulder_ratio": 1.914806660148144,
+      "positive_tail_to_shoulder_ratio": 1.734807053233661,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 0.24328819196958898,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 6260,
@@ -250,7 +646,25 @@
     "population_standard_deviation": 0.012797771776588966,
     "population_skewness": 11.03069602448482,
     "pearson_kurtosis": 450.6280611022364,
-    "excess_kurtosis": 447.6280611022364
+    "excess_kurtosis": 447.6280611022364,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 0.0001697540283203125,
+      "mad_estimate": 0.0019359588623046875,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.08124155273438052,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.23963154296870925,
+      "negative_extreme_score": 82.3103448275862,
+      "positive_extreme_score": 487.1950738916256,
+      "negative_tail_to_shoulder_ratio": 1.9573379652631664,
+      "positive_tail_to_shoulder_ratio": 3.938789671392938,
+      "negative_gap_score": 0.5044334975369458,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 6658,
@@ -261,7 +675,25 @@
     "population_standard_deviation": 0.022861288151052782,
     "population_skewness": 141.50674452117252,
     "pearson_kurtosis": 33199.348515086196,
-    "excess_kurtosis": 33196.348515086196
+    "excess_kurtosis": 33196.348515086196,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 0.000583648681640625,
+      "mad_estimate": 0.002422332763671875,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.045654296875,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.521026171874837,
+      "negative_extreme_score": 34.91181102362205,
+      "positive_extreme_score": 2586.3669291338583,
+      "negative_tail_to_shoulder_ratio": 1.8289745070538734,
+      "positive_tail_to_shoulder_ratio": 12.037912107717375,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 12.900787401574803,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 6700,
@@ -272,7 +704,25 @@
     "population_standard_deviation": 0.02398645758856693,
     "population_skewness": 12.982065373782238,
     "pearson_kurtosis": 403.88266053214625,
-    "excess_kurtosis": 400.88266053214625
+    "excess_kurtosis": 400.88266053214625,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 4.506111145019531e-05,
+      "mad_estimate": 0.0033881664276123047,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.1416015625,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.68359375,
+      "negative_extreme_score": 73.51129406797551,
+      "positive_extreme_score": 531.4780803602843,
+      "negative_tail_to_shoulder_ratio": 1.758379354630211,
+      "positive_tail_to_shoulder_ratio": 2.6343934501820887,
+      "negative_gap_score": 0.8646822883681655,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 7157,
@@ -283,7 +733,25 @@
     "population_standard_deviation": 0.018358403243982756,
     "population_skewness": 13.04281021032697,
     "pearson_kurtosis": 489.97851013091463,
-    "excess_kurtosis": 486.97851013091463
+    "excess_kurtosis": 486.97851013091463,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 1.52587890625e-05,
+      "mad_estimate": 0.0024566650390625,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.1044921875,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.495635546874837,
+      "negative_extreme_score": 92.03105590062111,
+      "positive_extreme_score": 502.45341614906835,
+      "negative_tail_to_shoulder_ratio": 2.163381515549715,
+      "positive_tail_to_shoulder_ratio": 2.4905351352310117,
+      "negative_gap_score": 0.39751552795031053,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 7264,
@@ -294,7 +762,25 @@
     "population_standard_deviation": 0.012795680043127684,
     "population_skewness": -9.173036083385991,
     "pearson_kurtosis": 625.5389594741789,
-    "excess_kurtosis": 622.5389594741789
+    "excess_kurtosis": 622.5389594741789,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 0.000514984130859375,
+      "mad_estimate": 0.003551483154296875,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.21266152343752207,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.07666015625,
+      "negative_extreme_score": 469.79914070891516,
+      "positive_extreme_score": 54.57465091299678,
+      "negative_tail_to_shoulder_ratio": 7.82677112578014,
+      "positive_tail_to_shoulder_ratio": 2.545413556435048,
+      "negative_gap_score": 8.799140708915145,
+      "positive_gap_score": 1.3748657357679914,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 7818,
@@ -305,7 +791,25 @@
     "population_standard_deviation": 0.047131897815853016,
     "population_skewness": 58.85797704686659,
     "pearson_kurtosis": 4636.583636670789,
-    "excess_kurtosis": 4633.583636670789
+    "excess_kurtosis": 4633.583636670789,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 0.000789642333984375,
+      "mad_estimate": 0.002544403076171875,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.08447265625,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 3.53125,
+      "negative_extreme_score": 58.45727136431784,
+      "positive_extreme_score": 1891.095952023988,
+      "negative_tail_to_shoulder_ratio": 1.7444857053375689,
+      "positive_tail_to_shoulder_ratio": 1.3629130113918155,
+      "negative_gap_score": 0.383808095952024,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 7933,
@@ -316,7 +820,25 @@
     "population_standard_deviation": 0.033351733144961065,
     "population_skewness": 44.926093931286395,
     "pearson_kurtosis": 5839.2308477990055,
-    "excess_kurtosis": 5836.2308477990055
+    "excess_kurtosis": 5836.2308477990055,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 6.198883056640625e-05,
+      "mad_estimate": 0.0034170150756835938,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.22498310546876105,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.5859375,
+      "negative_extreme_score": 176.0672620708903,
+      "positive_extreme_score": 1838.2090427016467,
+      "negative_tail_to_shoulder_ratio": 2.673350826436408,
+      "positive_tail_to_shoulder_ratio": 10.721028429114408,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 9.14540887524421,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 7992,
@@ -327,7 +849,25 @@
     "population_standard_deviation": 0.03593079869209941,
     "population_skewness": 1.0696684931954148,
     "pearson_kurtosis": 54.64436768226515,
-    "excess_kurtosis": 51.64436768226515
+    "excess_kurtosis": 51.64436768226515,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 0.0002231597900390625,
+      "mad_estimate": 0.009866714477539062,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.4870755859375221,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.53515625,
+      "negative_extreme_score": 122.35627295573168,
+      "positive_extreme_score": 112.41349313744442,
+      "negative_tail_to_shoulder_ratio": 2.477442062748486,
+      "positive_tail_to_shoulder_ratio": 2.0734403246107274,
+      "negative_gap_score": 0.7918035955924995,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 8208,
@@ -338,7 +878,25 @@
     "population_standard_deviation": 0.010605879041530614,
     "population_skewness": -3.4132261999221725,
     "pearson_kurtosis": 99.63845992381648,
-    "excess_kurtosis": 96.63845992381648
+    "excess_kurtosis": 96.63845992381648,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -0.00098419189453125,
+      "mad_estimate": 0.00344085693359375,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.1591796875,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.061767578125,
+      "negative_extreme_score": 208.60088691796008,
+      "positive_extreme_score": 35.3370288248337,
+      "negative_tail_to_shoulder_ratio": 4.537207619966241,
+      "positive_tail_to_shoulder_ratio": 1.937629179331307,
+      "negative_gap_score": 1.1352549889135255,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 8484,
@@ -349,7 +907,25 @@
     "population_standard_deviation": 0.03665343806513535,
     "population_skewness": 7.369585953724523,
     "pearson_kurtosis": 288.14068143707965,
-    "excess_kurtosis": 285.14068143707965
+    "excess_kurtosis": 285.14068143707965,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 0.0001468658447265625,
+      "mad_estimate": 0.0036983489990234375,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.4343412109375221,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.799864843749674,
+      "negative_extreme_score": 302.11707065497677,
+      "positive_extreme_score": 825.9200618875709,
+      "negative_tail_to_shoulder_ratio": 2.5716111109872832,
+      "positive_tail_to_shoulder_ratio": 3.8195222797883988,
+      "negative_gap_score": 2.112429087158329,
+      "positive_gap_score": 21.12429087158329,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 8535,
@@ -360,7 +936,25 @@
     "population_standard_deviation": 0.03666997970059855,
     "population_skewness": 23.16544328661592,
     "pearson_kurtosis": 1081.4410034933132,
-    "excess_kurtosis": 1078.4410034933132
+    "excess_kurtosis": 1078.4410034933132,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 0.0004119873046875,
+      "mad_estimate": 0.0045013427734375,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.1923828125,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 1.328125,
+      "negative_extreme_score": 67.34576271186441,
+      "positive_extreme_score": 867.7050847457627,
+      "negative_tail_to_shoulder_ratio": 1.572378314206569,
+      "positive_tail_to_shoulder_ratio": 2.9417788146598784,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 20.827118644067795,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 9235,
@@ -371,7 +965,25 @@
     "population_standard_deviation": 0.042448270665547294,
     "population_skewness": 1.0373478416735122,
     "pearson_kurtosis": 28.943241285443964,
-    "excess_kurtosis": 25.943241285443964
+    "excess_kurtosis": 25.943241285443964,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -0.0002498626708984375,
+      "mad_estimate": 0.0074520111083984375,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.4140625,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.517119921874837,
+      "negative_extreme_score": 97.72741233683134,
+      "positive_extreme_score": 149.95111338622985,
+      "negative_tail_to_shoulder_ratio": 1.7598925132629968,
+      "positive_tail_to_shoulder_ratio": 2.1598427199455386,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 1.0483747120552853,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 9425,
@@ -382,7 +994,25 @@
     "population_standard_deviation": 0.017392996175764886,
     "population_skewness": -7.582908236393244,
     "pearson_kurtosis": 149.2327474988415,
-    "excess_kurtosis": 146.2327474988415
+    "excess_kurtosis": 146.2327474988415,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -0.0003910064697265625,
+      "mad_estimate": 0.0026149749755859375,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.37890625,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.08984375,
+      "negative_extreme_score": 345.6652078774617,
+      "positive_extreme_score": 61.58205689277899,
+      "negative_tail_to_shoulder_ratio": 2.3880302946319243,
+      "positive_tail_to_shoulder_ratio": 1.7846287175801645,
+      "negative_gap_score": 5.975200583515682,
+      "positive_gap_score": 0.37345003646973013,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 9513,
@@ -393,7 +1023,25 @@
     "population_standard_deviation": 0.029520872112552433,
     "population_skewness": 57.88688678269158,
     "pearson_kurtosis": 4668.696313911924,
-    "excess_kurtosis": 4665.696313911924
+    "excess_kurtosis": 4665.696313911924,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 0.000743865966796875,
+      "mad_estimate": 0.003307342529296875,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.07861328125,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 1.7109375,
+      "negative_extreme_score": 44.220299884659745,
+      "positive_extreme_score": 916.2964244521338,
+      "negative_tail_to_shoulder_ratio": 1.842955342979378,
+      "positive_tail_to_shoulder_ratio": 1.7720251518456807,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 9538,
@@ -404,7 +1052,25 @@
     "population_standard_deviation": 0.03145915051530104,
     "population_skewness": 20.06130156042155,
     "pearson_kurtosis": 1038.3129471815341,
-    "excess_kurtosis": 1035.3129471815341
+    "excess_kurtosis": 1035.3129471815341,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 0.000774383544921875,
+      "mad_estimate": 0.003887176513671875,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.10760874023438052,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 1.224729687499348,
+      "negative_extreme_score": 44.41511285574092,
+      "positive_extreme_score": 592.6957801766438,
+      "negative_tail_to_shoulder_ratio": 1.592954488897027,
+      "positive_tail_to_shoulder_ratio": 1.8823506945159363,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 4.019627085377821,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 9877,
@@ -415,7 +1081,25 @@
     "population_standard_deviation": 0.030057859352382955,
     "population_skewness": -55.49655432190283,
     "pearson_kurtosis": 8440.736091449533,
-    "excess_kurtosis": 8437.736091449533
+    "excess_kurtosis": 8437.736091449533,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -0.00299072265625,
+      "mad_estimate": 0.0050048828125,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.9660007812502648,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.1259765625,
+      "negative_extreme_score": 1279.4024390243903,
+      "positive_extreme_score": 44.207317073170735,
+      "negative_tail_to_shoulder_ratio": 6.649213287234451,
+      "positive_tail_to_shoulder_ratio": 1.7155702792238523,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 0.3902439024390244,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 9938,
@@ -426,7 +1110,25 @@
     "population_standard_deviation": 0.06820269136982343,
     "population_skewness": 1.499304058495304,
     "pearson_kurtosis": 30.757786600929272,
-    "excess_kurtosis": 27.757786600929272
+    "excess_kurtosis": 27.757786600929272,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -0.00064849853515625,
+      "mad_estimate": 0.01364898681640625,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.48046875,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.98046875,
+      "negative_extreme_score": 49.177752934600335,
+      "positive_extreme_score": 160.88820570150924,
+      "negative_tail_to_shoulder_ratio": 1.3989124040005725,
+      "positive_tail_to_shoulder_ratio": 2.2382248419481012,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 10162,
@@ -437,7 +1139,25 @@
     "population_standard_deviation": 0.029050656073902004,
     "population_skewness": 3.0841193895206,
     "pearson_kurtosis": 35.538235000771564,
-    "excess_kurtosis": 32.538235000771564
+    "excess_kurtosis": 32.538235000771564,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 0.0021209716796875,
+      "mad_estimate": 0.0067291259765625,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.201171875,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.423828125,
+      "negative_extreme_score": 63.87981859410431,
+      "positive_extreme_score": 129.71655328798187,
+      "negative_tail_to_shoulder_ratio": 2.1144637093747654,
+      "positive_tail_to_shoulder_ratio": 2.0698701016752903,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 10361,
@@ -448,7 +1168,25 @@
     "population_standard_deviation": 0.18111712053849927,
     "population_skewness": -27.109562475007376,
     "pearson_kurtosis": 768.5610938411025,
-    "excess_kurtosis": 765.5610938411025
+    "excess_kurtosis": 765.5610938411025,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -0.006866455078125,
+      "mad_estimate": 0.007244110107421875,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -5.78125,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.029541015625,
+      "negative_extreme_score": 956.7266982622433,
+      "positive_extreme_score": 8.362295945234333,
+      "negative_tail_to_shoulder_ratio": 1.2002378246967735,
+      "positive_tail_to_shoulder_ratio": 1.663872590108969,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 10388,
@@ -459,7 +1197,25 @@
     "population_standard_deviation": 0.040843102123759814,
     "population_skewness": 8.416180840202479,
     "pearson_kurtosis": 189.05865315523175,
-    "excess_kurtosis": 186.05865315523175
+    "excess_kurtosis": 186.05865315523175,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 0.000213623046875,
+      "mad_estimate": 0.006103515625,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.228515625,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.9609375,
+      "negative_extreme_score": 97.315,
+      "positive_extreme_score": 372.445,
+      "negative_tail_to_shoulder_ratio": 2.5967978652434955,
+      "positive_tail_to_shoulder_ratio": 2.3661573647596965,
+      "negative_gap_score": 1.28,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 10487,
@@ -470,7 +1226,25 @@
     "population_standard_deviation": 0.02249237850268082,
     "population_skewness": 12.305405793402075,
     "pearson_kurtosis": 397.4673937822214,
-    "excess_kurtosis": 394.4673937822214
+    "excess_kurtosis": 394.4673937822214,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 0.0003261566162109375,
+      "mad_estimate": 0.0035610198974609375,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.11346811523438052,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.626494921874837,
+      "negative_extreme_score": 59.05249062667381,
+      "positive_extreme_score": 502.3101231922871,
+      "negative_tail_to_shoulder_ratio": 1.8479585193208294,
+      "positive_tail_to_shoulder_ratio": 2.8566361700347485,
+      "negative_gap_score": 0.5484734868773433,
+      "positive_gap_score": 6.58168184252812,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 10656,
@@ -481,7 +1255,25 @@
     "population_standard_deviation": 0.034695953317789845,
     "population_skewness": 20.80859404045011,
     "pearson_kurtosis": 728.8350949700438,
-    "excess_kurtosis": 725.8350949700438
+    "excess_kurtosis": 725.8350949700438,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 0.0013427734375,
+      "mad_estimate": 0.003265380859375,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.13318623046876105,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 1.206114843749674,
+      "negative_extreme_score": 85.64485981308411,
+      "positive_extreme_score": 781.9439252336449,
+      "negative_tail_to_shoulder_ratio": 2.0788311651542997,
+      "positive_tail_to_shoulder_ratio": 2.119359163016529,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 10819,
@@ -492,7 +1284,25 @@
     "population_standard_deviation": 0.008233750797883922,
     "population_skewness": -0.35886396027480044,
     "pearson_kurtosis": 42.84227910449963,
-    "excess_kurtosis": 39.84227910449963
+    "excess_kurtosis": 39.84227910449963,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 6.914138793945312e-05,
+      "mad_estimate": 0.002205371856689453,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.08349609375,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.099609375,
+      "negative_extreme_score": 68.22421621621622,
+      "positive_extreme_score": 149.63870270270272,
+      "negative_tail_to_shoulder_ratio": 1.800506707598902,
+      "positive_tail_to_shoulder_ratio": 3.315332621161096,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 10903,
@@ -503,7 +1313,25 @@
     "population_standard_deviation": 0.06616069326120219,
     "population_skewness": -5.434361573235416,
     "pearson_kurtosis": 265.9162388861025,
-    "excess_kurtosis": 262.9162388861025
+    "excess_kurtosis": 262.9162388861025,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -0.00030517578125,
+      "mad_estimate": 0.006744384765625,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -1.8203125,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 1.109375,
+      "negative_extreme_score": 403.0678733031674,
+      "positive_extreme_score": 310.4886877828054,
+      "negative_tail_to_shoulder_ratio": 1.4936449914484053,
+      "positive_tail_to_shoulder_ratio": 1.8870799185963367,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 2.316742081447964,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 10916,
@@ -514,7 +1342,25 @@
     "population_standard_deviation": 0.024729001529983082,
     "population_skewness": -6.633351712174826,
     "pearson_kurtosis": 142.13399180508307,
-    "excess_kurtosis": 139.13399180508307
+    "excess_kurtosis": 139.13399180508307,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -0.002655029296875,
+      "mad_estimate": 0.00405120849609375,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.419921875,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.059814453125,
+      "negative_extreme_score": 432.2787193973635,
+      "positive_extreme_score": 33.19774011299435,
+      "negative_tail_to_shoulder_ratio": 4.196957507496526,
+      "positive_tail_to_shoulder_ratio": 2.1529066927210554,
+      "negative_gap_score": 7.7137476459510355,
+      "positive_gap_score": 0.3615819209039548,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 11593,
@@ -525,7 +1371,25 @@
     "population_standard_deviation": 0.13021299594792035,
     "population_skewness": -103.39411231303883,
     "pearson_kurtosis": 11684.629595554325,
-    "excess_kurtosis": 11681.629595554325
+    "excess_kurtosis": 11681.629595554325,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -0.000278472900390625,
+      "mad_estimate": 0.003376007080078125,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -2.328125,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.09003061523435463,
+      "negative_extreme_score": 4942.887005649717,
+      "positive_extreme_score": 43.03841807909605,
+      "negative_tail_to_shoulder_ratio": 7.168523067494113,
+      "positive_tail_to_shoulder_ratio": 1.6088968137248758,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 0.28926553672316385,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 11732,
@@ -536,7 +1400,25 @@
     "population_standard_deviation": 0.035491190138255996,
     "population_skewness": -2.7659880668126187,
     "pearson_kurtosis": 41.20424100476035,
-    "excess_kurtosis": 38.20424100476035
+    "excess_kurtosis": 38.20424100476035,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -0.001220703125,
+      "mad_estimate": 0.004547119140625,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.484375,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.3984375,
+      "negative_extreme_score": 203.75838926174498,
+      "positive_extreme_score": 152.3221476510067,
+      "negative_tail_to_shoulder_ratio": 1.9176351692774127,
+      "positive_tail_to_shoulder_ratio": 1.7330482590103848,
+      "negative_gap_score": 1.7181208053691275,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 12612,
@@ -547,7 +1429,25 @@
     "population_standard_deviation": 0.003613631366325503,
     "population_skewness": -1.4331177334730516,
     "pearson_kurtosis": 22.688914428991637,
-    "excess_kurtosis": 19.688914428991637
+    "excess_kurtosis": 19.688914428991637,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -1.0669231414794922e-05,
+      "mad_estimate": 0.0008895993232727051,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.042724609375,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.029831872558588657,
+      "negative_extreme_score": 94.66941373534338,
+      "positive_extreme_score": 71.64053601340034,
+      "negative_tail_to_shoulder_ratio": 1.9716712181194802,
+      "positive_tail_to_shoulder_ratio": 2.135587940359802,
+      "negative_gap_score": 1.0977554438860972,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 12623,
@@ -558,7 +1458,25 @@
     "population_standard_deviation": 0.02070003594339864,
     "population_skewness": -50.30332455721606,
     "pearson_kurtosis": 39457.76372505044,
-    "excess_kurtosis": 39454.76372505044
+    "excess_kurtosis": 39454.76372505044,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -0.0002002716064453125,
+      "mad_estimate": 0.0028972625732421875,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.4206693359375221,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.2294921875,
+      "negative_extreme_score": 404.40750493745884,
+      "positive_extreme_score": 182.08360763660303,
+      "negative_tail_to_shoulder_ratio": 2.786589615713035,
+      "positive_tail_to_shoulder_ratio": 2.296740709985468,
+      "negative_gap_score": 2.69651086240948,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 13068,
@@ -569,7 +1487,25 @@
     "population_standard_deviation": 0.029503626661420333,
     "population_skewness": 31.877117832705697,
     "pearson_kurtosis": 4738.320354534264,
-    "excess_kurtosis": 4735.320354534264
+    "excess_kurtosis": 4735.320354534264,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 0.000934600830078125,
+      "mad_estimate": 0.003673553466796875,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.12469858398438052,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.625,
+      "negative_extreme_score": 57.01038421599169,
+      "positive_extreme_score": 1786.1630321910695,
+      "negative_tail_to_shoulder_ratio": 1.6670013968791433,
+      "positive_tail_to_shoulder_ratio": 10.51422720743299,
+      "negative_gap_score": 0.5316718587746625,
+      "positive_gap_score": 76.5607476635514,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 13268,
@@ -580,7 +1516,25 @@
     "population_standard_deviation": 0.018645602593574735,
     "population_skewness": 0.11251238322025778,
     "pearson_kurtosis": 122.39838547113989,
-    "excess_kurtosis": 119.39838547113989
+    "excess_kurtosis": 119.39838547113989,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -6.705522537231445e-06,
+      "mad_estimate": 0.0023584067821502686,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.33157304687504413,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.3210599609374185,
+      "negative_extreme_score": 345.3375497567448,
+      "positive_extreme_score": 340.37430972388955,
+      "negative_tail_to_shoulder_ratio": 2.456360365636688,
+      "positive_tail_to_shoulder_ratio": 2.5002317723402068,
+      "negative_gap_score": 1.6563088393252037,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 13781,
@@ -591,7 +1545,25 @@
     "population_standard_deviation": 0.02599521139432878,
     "population_skewness": -6.62795255079112,
     "pearson_kurtosis": 98.45359044176116,
-    "excess_kurtosis": 95.45359044176116
+    "excess_kurtosis": 95.45359044176116,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -0.00077056884765625,
+      "mad_estimate": 0.00505828857421875,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.4987943359375221,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.166015625,
+      "negative_extreme_score": 233.83861236802414,
+      "positive_extreme_score": 62.125188536953246,
+      "negative_tail_to_shoulder_ratio": 2.3750336014363533,
+      "positive_tail_to_shoulder_ratio": 1.8841315584831435,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 14226,
@@ -602,7 +1574,25 @@
     "population_standard_deviation": 0.054024149882849266,
     "population_skewness": -80.7060431758634,
     "pearson_kurtosis": 8174.471228553259,
-    "excess_kurtosis": 8171.471228553259
+    "excess_kurtosis": 8171.471228553259,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -0.00124359130859375,
+      "mad_estimate": 0.00330352783203125,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -1.6015625,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.08349609375,
+      "negative_extreme_score": 2023.9745958429562,
+      "positive_extreme_score": 41.61431870669746,
+      "negative_tail_to_shoulder_ratio": 4.178077489666614,
+      "positive_tail_to_shoulder_ratio": 1.6223102547942738,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 0.2956120092378753,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 14506,
@@ -613,7 +1603,25 @@
     "population_standard_deviation": 0.06072359168339115,
     "population_skewness": -59.764653701620965,
     "pearson_kurtosis": 5126.8457099977395,
-    "excess_kurtosis": 5123.8457099977395
+    "excess_kurtosis": 5123.8457099977395,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -0.00139617919921875,
+      "mad_estimate": 0.00373077392578125,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -2.699459375000353,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.07421875,
+      "negative_extreme_score": 1972.239263803681,
+      "positive_extreme_score": 32.374233128834355,
+      "negative_tail_to_shoulder_ratio": 2.7271336091206644,
+      "positive_tail_to_shoulder_ratio": 1.5973161134093432,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 0.130879345603272,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 14581,
@@ -624,7 +1632,25 @@
     "population_standard_deviation": 0.002580535602626949,
     "population_skewness": -0.6028019937232533,
     "pearson_kurtosis": 16.530810071011803,
-    "excess_kurtosis": 13.530810071011803
+    "excess_kurtosis": 13.530810071011803,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 2.3245811462402344e-05,
+      "mad_estimate": 0.0006824731826782227,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.02482698974609513,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.021728515625,
+      "negative_extreme_score": 78.73449781659389,
+      "positive_extreme_score": 51.657816593886466,
+      "negative_tail_to_shoulder_ratio": 2.162320883719776,
+      "positive_tail_to_shoulder_ratio": 1.6242633611054664,
+      "negative_gap_score": 1.4309170305676855,
+      "positive_gap_score": 0.35772925764192137,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 14679,
@@ -635,7 +1661,25 @@
     "population_standard_deviation": 0.021339123064063128,
     "population_skewness": 1.6919690635971845,
     "pearson_kurtosis": 78.10293651836702,
-    "excess_kurtosis": 75.10293651836702
+    "excess_kurtosis": 75.10293651836702,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -0.000885009765625,
+      "mad_estimate": 0.003692626953125,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.248046875,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.3933255859374185,
+      "negative_extreme_score": 164.25619834710744,
+      "positive_extreme_score": 244.07438016528926,
+      "negative_tail_to_shoulder_ratio": 2.4540066674898138,
+      "positive_tail_to_shoulder_ratio": 2.2862795789602535,
+      "negative_gap_score": 1.0578512396694215,
+      "positive_gap_score": 4.231404958677686,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 15471,
@@ -646,7 +1690,25 @@
     "population_standard_deviation": 0.022760537403463052,
     "population_skewness": 91.57333633804292,
     "pearson_kurtosis": 25821.045935530517,
-    "excess_kurtosis": 25818.045935530517
+    "excess_kurtosis": 25818.045935530517,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 0.000606536865234375,
+      "mad_estimate": 0.002788543701171875,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.07587045898438052,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.411651171874837,
+      "negative_extreme_score": 50.64705882352941,
+      "positive_extreme_score": 2627.7222982216144,
+      "negative_tail_to_shoulder_ratio": 1.8467192035491748,
+      "positive_tail_to_shoulder_ratio": 17.826576091824148,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 11.20656634746922,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 15617,
@@ -657,7 +1719,25 @@
     "population_standard_deviation": 0.029596236411867465,
     "population_skewness": -56.93952113477896,
     "pearson_kurtosis": 17499.006979838723,
-    "excess_kurtosis": 17496.006979838723
+    "excess_kurtosis": 17496.006979838723,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -0.0004482269287109375,
+      "mad_estimate": 0.0029392242431640625,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -1.015625,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.09521484375,
+      "negative_extreme_score": 1028.4990266061,
+      "positive_extreme_score": 54.80791693705386,
+      "negative_tail_to_shoulder_ratio": 2.9777959398397353,
+      "positive_tail_to_shoulder_ratio": 1.6839597248529559,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 15630,
@@ -668,7 +1748,25 @@
     "population_standard_deviation": 0.026127799943359592,
     "population_skewness": -11.277148011814557,
     "pearson_kurtosis": 666.040753245923,
-    "excess_kurtosis": 663.040753245923
+    "excess_kurtosis": 663.040753245923,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -0.00029754638671875,
+      "mad_estimate": 0.00344085693359375,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.8125,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.447265625,
+      "negative_extreme_score": 649.2793791574279,
+      "positive_extreme_score": 292.98226164079824,
+      "negative_tail_to_shoulder_ratio": 2.7506411039198926,
+      "positive_tail_to_shoulder_ratio": 2.2524419139832603,
+      "negative_gap_score": 4.541019955654102,
+      "positive_gap_score": 2.270509977827051,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 15922,
@@ -679,7 +1777,25 @@
     "population_standard_deviation": 0.008351895839137582,
     "population_skewness": -1.6141305078228523,
     "pearson_kurtosis": 25.985265947544637,
-    "excess_kurtosis": 22.985265947544637
+    "excess_kurtosis": 22.985265947544637,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 7.2479248046875e-05,
+      "mad_estimate": 0.001621246337890625,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.09765625,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.07421875,
+      "negative_extreme_score": 105.75764705882352,
+      "positive_extreme_score": 84.88705882352942,
+      "negative_tail_to_shoulder_ratio": 1.7544400640149889,
+      "positive_tail_to_shoulder_ratio": 1.8560991922621803,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 0.6023529411764705,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 16032,
@@ -690,7 +1806,25 @@
     "population_standard_deviation": 0.018998365665749,
     "population_skewness": 25.63600468692356,
     "pearson_kurtosis": 12101.069158794282,
-    "excess_kurtosis": 12098.069158794282
+    "excess_kurtosis": 12098.069158794282,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 0.000583648681640625,
+      "mad_estimate": 0.003261566162109375,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.09716796875,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.40625,
+      "negative_extreme_score": 46.58830409356725,
+      "positive_extreme_score": 332.7707602339181,
+      "negative_tail_to_shoulder_ratio": 1.5544585365853658,
+      "positive_tail_to_shoulder_ratio": 2.6754840469048267,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 2.3953216374269006,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 16173,
@@ -701,7 +1835,25 @@
     "population_standard_deviation": 0.061443943949093575,
     "population_skewness": 2.616433385619693,
     "pearson_kurtosis": 57.35947279722885,
-    "excess_kurtosis": 54.35947279722885
+    "excess_kurtosis": 54.35947279722885,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 0.0003910064697265625,
+      "mad_estimate": 0.0061893463134765625,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.63671875,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 1.0546875,
+      "negative_extreme_score": 201.3919876733436,
+      "positive_extreme_score": 323.07272727272726,
+      "negative_tail_to_shoulder_ratio": 1.956467851593724,
+      "positive_tail_to_shoulder_ratio": 1.8966287053034345,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 16537,
@@ -712,7 +1864,25 @@
     "population_standard_deviation": 0.002601290786909752,
     "population_skewness": 3.837091460646824,
     "pearson_kurtosis": 69.63710657392369,
-    "excess_kurtosis": 66.63710657392369
+    "excess_kurtosis": 66.63710657392369,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 8.881092071533203e-06,
+      "mad_estimate": 0.0006319880485534668,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.019287109375,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.05517578125,
+      "negative_extreme_score": 62.595586154861834,
+      "positive_extreme_score": 104.2885032537961,
+      "negative_tail_to_shoulder_ratio": 2.0501493514717377,
+      "positive_tail_to_shoulder_ratio": 1.194721607870805,
+      "negative_gap_score": 0.772611525040083,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 16644,
@@ -723,7 +1893,25 @@
     "population_standard_deviation": 0.017424158589851,
     "population_skewness": -0.9618434679993464,
     "pearson_kurtosis": 22.962183142384266,
-    "excess_kurtosis": 19.962183142384266
+    "excess_kurtosis": 19.962183142384266,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 0.00084686279296875,
+      "mad_estimate": 0.00502777099609375,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.21484375,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.1484375,
+      "negative_extreme_score": 91.06980273141123,
+      "positive_extreme_score": 74.80576631259484,
+      "negative_tail_to_shoulder_ratio": 2.122846733401719,
+      "positive_tail_to_shoulder_ratio": 2.548307056086844,
+      "negative_gap_score": 0.7769347496206374,
+      "positive_gap_score": 1.165402124430956,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 16753,
@@ -734,7 +1922,25 @@
     "population_standard_deviation": 0.027189245985623726,
     "population_skewness": 1.1870136707323378,
     "pearson_kurtosis": 160.7982127706085,
-    "excess_kurtosis": 157.7982127706085
+    "excess_kurtosis": 157.7982127706085,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -9.202957153320312e-05,
+      "mad_estimate": 0.002486705780029297,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.466796875,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.51953125,
+      "negative_extreme_score": 469.64813039309684,
+      "positive_extreme_score": 499.56836049856184,
+      "negative_tail_to_shoulder_ratio": 2.502388247879185,
+      "positive_tail_to_shoulder_ratio": 2.390731090023299,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 17083,
@@ -745,7 +1951,25 @@
     "population_standard_deviation": 0.12569188843061527,
     "population_skewness": -69.30367653704423,
     "pearson_kurtosis": 5304.840623220041,
-    "excess_kurtosis": 5301.840623220041
+    "excess_kurtosis": 5301.840623220041,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -0.001220703125,
+      "mad_estimate": 0.0030517578125,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -8.860337500001412,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.11328125,
+      "negative_extreme_score": 3747.44,
+      "positive_extreme_score": 70.8,
+      "negative_tail_to_shoulder_ratio": 1.2909051273494052,
+      "positive_tail_to_shoulder_ratio": 1.8869936034115138,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 0.32,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 17451,
@@ -756,7 +1980,25 @@
     "population_standard_deviation": 0.0026408208112681615,
     "population_skewness": 0.00577452659725473,
     "pearson_kurtosis": 18.787227554294237,
-    "excess_kurtosis": 15.787227554294237
+    "excess_kurtosis": 15.787227554294237,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 9.107589721679688e-05,
+      "mad_estimate": 0.0007100105285644531,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.026611328125,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.02587890625,
+      "negative_extreme_score": 74.22901276024177,
+      "positive_extreme_score": 75.00402955003358,
+      "negative_tail_to_shoulder_ratio": 1.973731673779889,
+      "positive_tail_to_shoulder_ratio": 2.0650690630720585,
+      "negative_gap_score": 0.34385493619879115,
+      "positive_gap_score": 0.34385493619879115,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 17704,
@@ -767,7 +2009,25 @@
     "population_standard_deviation": 0.010656413423708355,
     "population_skewness": 13.844909371704889,
     "pearson_kurtosis": 571.0524158054551,
-    "excess_kurtosis": 568.0524158054551
+    "excess_kurtosis": 568.0524158054551,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -8.106231689453125e-05,
+      "mad_estimate": 0.0017671585083007812,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.083984375,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.41796875,
+      "negative_extreme_score": 94.45169994603346,
+      "positive_extreme_score": 372.5099838100378,
+      "negative_tail_to_shoulder_ratio": 1.9893269984882755,
+      "positive_tail_to_shoulder_ratio": 1.574654904564088,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 2.2104695089044792,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 17792,
@@ -778,7 +2038,25 @@
     "population_standard_deviation": 0.0021201539676315023,
     "population_skewness": 0.8530647584739198,
     "pearson_kurtosis": 18.1914926870694,
-    "excess_kurtosis": 15.191492687069399
+    "excess_kurtosis": 15.191492687069399,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 6.151199340820312e-05,
+      "mad_estimate": 0.0005955696105957031,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.018310546875,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.023681640625,
+      "negative_extreme_score": 65.07686148919136,
+      "positive_extreme_score": 77.37309847878302,
+      "negative_tail_to_shoulder_ratio": 2.109605751511848,
+      "positive_tail_to_shoulder_ratio": 1.9509235893812455,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 17931,
@@ -789,7 +2067,25 @@
     "population_standard_deviation": 0.005101596303655312,
     "population_skewness": -0.5899148357989573,
     "pearson_kurtosis": 14.563913736464851,
-    "excess_kurtosis": 11.563913736464851
+    "excess_kurtosis": 11.563913736464851,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 1.0728836059570312e-05,
+      "mad_estimate": 0.0015075206756591797,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.04931640625,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.039644213867177314,
+      "negative_extreme_score": 56.851020085402496,
+      "positive_extreme_score": 53.9217143760873,
+      "negative_tail_to_shoulder_ratio": 1.7374633264537709,
+      "positive_tail_to_shoulder_ratio": 2.050995495983209,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 17938,
@@ -800,7 +2096,25 @@
     "population_standard_deviation": 0.013141651907713018,
     "population_skewness": -64.13973830287408,
     "pearson_kurtosis": 7925.127801983849,
-    "excess_kurtosis": 7922.127801983849
+    "excess_kurtosis": 7922.127801983849,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -0.00012493133544921875,
+      "mad_estimate": 0.0020399093627929688,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.263671875,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.06787109375,
+      "negative_extreme_score": 966.9700794763909,
+      "positive_extreme_score": 60.7400654511454,
+      "negative_tail_to_shoulder_ratio": 7.484553951705995,
+      "positive_tail_to_shoulder_ratio": 1.8222275207225909,
+      "negative_gap_score": 11.489481065918653,
+      "positive_gap_score": 0.7180925666199158,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 17979,
@@ -811,7 +2125,25 @@
     "population_standard_deviation": 0.010537402466420065,
     "population_skewness": 1.1784736647934246,
     "pearson_kurtosis": 95.81691222981252,
-    "excess_kurtosis": 92.81691222981252
+    "excess_kurtosis": 92.81691222981252,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 2.5391578674316406e-05,
+      "mad_estimate": 0.0015844106674194336,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.1611328125,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.177734375,
+      "negative_extreme_score": 253.33872545331428,
+      "positive_extreme_score": 267.482883154014,
+      "negative_tail_to_shoulder_ratio": 2.490674187971977,
+      "positive_tail_to_shoulder_ratio": 2.3848132225062737,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 1.2327138665262207,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 18063,
@@ -822,7 +2154,25 @@
     "population_standard_deviation": 0.011887635644476308,
     "population_skewness": -2.1188163436856695,
     "pearson_kurtosis": 47.7328318974421,
-    "excess_kurtosis": 44.7328318974421
+    "excess_kurtosis": 44.7328318974421,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 0.00010728836059570312,
+      "mad_estimate": 0.002396106719970703,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.18396748046876105,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.1171875,
+      "negative_extreme_score": 153.69572139303483,
+      "positive_extreme_score": 102.04955223880597,
+      "negative_tail_to_shoulder_ratio": 2.0006617593636373,
+      "positive_tail_to_shoulder_ratio": 2.088496548353595,
+      "negative_gap_score": 1.6302487562189054,
+      "positive_gap_score": 0.40756218905472635,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 18105,
@@ -833,7 +2183,25 @@
     "population_standard_deviation": 0.009525889774016078,
     "population_skewness": 73.87672342850364,
     "pearson_kurtosis": 19493.358376214022,
-    "excess_kurtosis": 19490.358376214022
+    "excess_kurtosis": 19490.358376214022,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -4.6193599700927734e-06,
+      "mad_estimate": 0.0018280446529388428,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.07421875,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.09619140625,
+      "negative_extreme_score": 123.40033257796834,
+      "positive_extreme_score": 1444.510458272877,
+      "negative_tail_to_shoulder_ratio": 3.0396006285406107,
+      "positive_tail_to_shoulder_ratio": 27.45050642805648,
+      "negative_gap_score": 1.068423026133455,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 18343,
@@ -844,7 +2212,25 @@
     "population_standard_deviation": 0.008952958772836785,
     "population_skewness": 10.001558275922163,
     "pearson_kurtosis": 811.035000624751,
-    "excess_kurtosis": 808.035000624751
+    "excess_kurtosis": 808.035000624751,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 0.0002803802490234375,
+      "mad_estimate": 0.0021114349365234375,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.07001108398438052,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.2663724609374185,
+      "negative_extreme_score": 69.27822944896116,
+      "positive_extreme_score": 327.3252032520325,
+      "negative_tail_to_shoulder_ratio": 2.080999102726186,
+      "positive_tail_to_shoulder_ratio": 2.5973184469188086,
+      "negative_gap_score": 0.46251129177958444,
+      "positive_gap_score": 5.5501355013550135,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 18596,
@@ -855,7 +2241,25 @@
     "population_standard_deviation": 0.0025960502811416203,
     "population_skewness": -0.3361108005309653,
     "pearson_kurtosis": 16.910706653798695,
-    "excess_kurtosis": 13.910706653798695
+    "excess_kurtosis": 13.910706653798695,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 3.600120544433594e-05,
+      "mad_estimate": 0.0007307529449462891,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.026611328125,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.02490234375,
+      "negative_extreme_score": 66.03295269168026,
+      "positive_extreme_score": 58.584339314845025,
+      "negative_tail_to_shoulder_ratio": 1.8108296724435657,
+      "positive_tail_to_shoulder_ratio": 1.721631494673864,
+      "negative_gap_score": 0.334094616639478,
+      "positive_gap_score": 0.334094616639478,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 18862,
@@ -866,7 +2270,25 @@
     "population_standard_deviation": 0.007962710583262995,
     "population_skewness": 47.60292276417293,
     "pearson_kurtosis": 12157.74912412271,
-    "excess_kurtosis": 12154.74912412271
+    "excess_kurtosis": 12154.74912412271,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 2.765655517578125e-05,
+      "mad_estimate": 0.0016527175903320312,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.0556640625,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.1325833984374185,
+      "negative_extreme_score": 81.55856895556838,
+      "positive_extreme_score": 1385.0126947489903,
+      "negative_tail_to_shoulder_ratio": 2.420346935630255,
+      "positive_tail_to_shoulder_ratio": 17.26846993529946,
+      "negative_gap_score": 0.2954414310444316,
+      "positive_gap_score": 9.454125793421811,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 19116,
@@ -877,7 +2299,25 @@
     "population_standard_deviation": 0.01102679516006575,
     "population_skewness": -0.7045358182231766,
     "pearson_kurtosis": 15.736726620179335,
-    "excess_kurtosis": 12.736726620179335
+    "excess_kurtosis": 12.736726620179335,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 7.525086402893066e-07,
+      "mad_estimate": 0.0029136762022972107,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.10302734375,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.08954233398435463,
+      "negative_extreme_score": 59.49205890550724,
+      "positive_extreme_score": 96.52728304868475,
+      "negative_tail_to_shoulder_ratio": 1.682459470312724,
+      "positive_tail_to_shoulder_ratio": 3.1409903963740105,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 1.3406602960618001,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 19255,
@@ -888,7 +2328,25 @@
     "population_standard_deviation": 0.009514271578198522,
     "population_skewness": -27.925280486292195,
     "pearson_kurtosis": 2420.7618854523034,
-    "excess_kurtosis": 2417.7618854523034
+    "excess_kurtosis": 2417.7618854523034,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 1.519918441772461e-06,
+      "mad_estimate": 0.0018325746059417725,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.19913427734380518,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.07880014648435463,
+      "negative_extreme_score": 579.7862288790229,
+      "positive_extreme_score": 90.0577482883674,
+      "negative_tail_to_shoulder_ratio": 5.335562638791692,
+      "positive_tail_to_shoulder_ratio": 2.094421562582806,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 19539,
@@ -899,7 +2357,25 @@
     "population_standard_deviation": 0.0007702938033620245,
     "population_skewness": -0.3561285641951624,
     "pearson_kurtosis": 19.78155471757159,
-    "excess_kurtosis": 16.78155471757159
+    "excess_kurtosis": 16.78155471757159,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -1.1622905731201172e-05,
+      "mad_estimate": 0.00019818544387817383,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.007835858154297565,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.007580038452147164,
+      "negative_extreme_score": 79.39759398496241,
+      "positive_extreme_score": 70.27578947368421,
+      "negative_tail_to_shoulder_ratio": 2.011116346438076,
+      "positive_tail_to_shoulder_ratio": 1.8345969181406618,
+      "negative_gap_score": 0.30796992481203006,
+      "positive_gap_score": 0.9239097744360902,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 19723,
@@ -910,7 +2386,25 @@
     "population_standard_deviation": 0.002056366999564678,
     "population_skewness": 0.24943347408474956,
     "pearson_kurtosis": 20.46595435782157,
-    "excess_kurtosis": 17.46595435782157
+    "excess_kurtosis": 17.46595435782157,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -3.7401914596557617e-06,
+      "mad_estimate": 0.0005760937929153442,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.01994417724609513,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.022263513183588657,
+      "negative_extreme_score": 69.49445177310469,
+      "positive_extreme_score": 90.061069294638,
+      "negative_tail_to_shoulder_ratio": 2.0077454771350407,
+      "positive_tail_to_shoulder_ratio": 2.33004143484073,
+      "negative_gap_score": 0.42378624453583713,
+      "positive_gap_score": 1.6951449781433485,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 19765,
@@ -921,7 +2415,25 @@
     "population_standard_deviation": 0.020071013275952614,
     "population_skewness": -59.391067517489724,
     "pearson_kurtosis": 4508.2129104542455,
-    "excess_kurtosis": 4505.2129104542455
+    "excess_kurtosis": 4505.2129104542455,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 8.487701416015625e-05,
+      "mad_estimate": 0.0020532608032226562,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -1.4140625,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.07763671875,
+      "negative_extreme_score": 875.1737111007895,
+      "positive_extreme_score": 83.90478402229448,
+      "negative_tail_to_shoulder_ratio": 1.270701983557239,
+      "positive_tail_to_shoulder_ratio": 2.2214611591387006,
+      "negative_gap_score": 3.8049233627496517,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 20017,
@@ -932,7 +2444,25 @@
     "population_standard_deviation": 0.008514003728108782,
     "population_skewness": -2.1313909344555766,
     "pearson_kurtosis": 56.47946879988458,
-    "excess_kurtosis": 53.47946879988458
+    "excess_kurtosis": 53.47946879988458,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -0.00010061264038085938,
+      "mad_estimate": 0.0017485618591308594,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.12927998046876105,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.08984375,
+      "negative_extreme_score": 231.15925824925006,
+      "positive_extreme_score": 111.47722934278701,
+      "negative_tail_to_shoulder_ratio": 3.128953711064832,
+      "positive_tail_to_shoulder_ratio": 2.1671711897024286,
+      "negative_gap_score": 1.1169893646032178,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 20050,
@@ -943,7 +2473,25 @@
     "population_standard_deviation": 0.011410420805252687,
     "population_skewness": 1.397220795606354,
     "pearson_kurtosis": 61.747068539899836,
-    "excess_kurtosis": 58.747068539899836
+    "excess_kurtosis": 58.747068539899836,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -3.2901763916015625e-05,
+      "mad_estimate": 0.0022301673889160156,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.11376953125,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.1962890625,
+      "negative_extreme_score": 109.0192431045542,
+      "positive_extreme_score": 192.2473807996579,
+      "negative_tail_to_shoulder_ratio": 2.137668065553427,
+      "positive_tail_to_shoulder_ratio": 2.1838811610888063,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 0.8757750694889886,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 20262,
@@ -954,7 +2502,25 @@
     "population_standard_deviation": 0.006805467721801836,
     "population_skewness": -0.7388564819942323,
     "pearson_kurtosis": 21.428248638106346,
-    "excess_kurtosis": 18.428248638106346
+    "excess_kurtosis": 18.428248638106346,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 4.991888999938965e-07,
+      "mad_estimate": 0.001662708818912506,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.07861328125,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.056640625,
+      "negative_extreme_score": 108.65676517375036,
+      "positive_extreme_score": 58.58609100889476,
+      "negative_tail_to_shoulder_ratio": 2.298128402937137,
+      "positive_tail_to_shoulder_ratio": 1.7198339302948695,
+      "negative_gap_score": 0.5873322429592454,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 20488,
@@ -965,7 +2531,25 @@
     "population_standard_deviation": 0.012860104151273918,
     "population_skewness": -14.587796251759173,
     "pearson_kurtosis": 877.6774247833823,
-    "excess_kurtosis": 874.6774247833823
+    "excess_kurtosis": 874.6774247833823,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -0.0001773834228515625,
+      "mad_estimate": 0.0023860931396484375,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.236328125,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.07245249023435463,
+      "negative_extreme_score": 484.5043964828138,
+      "positive_extreme_score": 58.39568345323741,
+      "negative_tail_to_shoulder_ratio": 4.895485861514728,
+      "positive_tail_to_shoulder_ratio": 1.9184604441209403,
+      "negative_gap_score": 3.2741806554756194,
+      "positive_gap_score": 0.40927258193445243,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 20985,
@@ -976,7 +2560,25 @@
     "population_standard_deviation": 0.011351934994212809,
     "population_skewness": 5.6246500203800585,
     "pearson_kurtosis": 164.52182763908817,
-    "excess_kurtosis": 161.52182763908817
+    "excess_kurtosis": 161.52182763908817,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 6.771087646484375e-05,
+      "mad_estimate": 0.0020990371704101562,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.08349609375,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.1982421875,
+      "negative_extreme_score": 77.2626079054975,
+      "positive_extreme_score": 336.8037255792822,
+      "negative_tail_to_shoulder_ratio": 1.9407575636533787,
+      "positive_tail_to_shoulder_ratio": 3.5673793677605015,
+      "negative_gap_score": 0.46524307133121307,
+      "positive_gap_score": 3.7219445706497045,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 21894,
@@ -987,7 +2589,25 @@
     "population_standard_deviation": 0.007833810997810445,
     "population_skewness": -7.7231149909645636,
     "pearson_kurtosis": 292.80775156085923,
-    "excess_kurtosis": 289.80775156085923
+    "excess_kurtosis": 289.80775156085923,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -3.600120544433594e-05,
+      "mad_estimate": 0.001512765884399414,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.22265625,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.09198374023435463,
+      "negative_extreme_score": 304.6747044917258,
+      "positive_extreme_score": 127.19669030732861,
+      "negative_tail_to_shoulder_ratio": 2.070348502843949,
+      "positive_tail_to_shoulder_ratio": 2.0910601431251394,
+      "negative_gap_score": 1.2910953506698188,
+      "positive_gap_score": 0.6455476753349094,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 22412,
@@ -998,7 +2618,25 @@
     "population_standard_deviation": 0.009084429745032947,
     "population_skewness": 1.6624911994724891,
     "pearson_kurtosis": 73.95309782317263,
-    "excess_kurtosis": 70.95309782317263
+    "excess_kurtosis": 70.95309782317263,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 3.552436828613281e-05,
+      "mad_estimate": 0.0017802715301513672,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.11395639648438052,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.15369404296870925,
+      "negative_extreme_score": 142.64215883219498,
+      "positive_extreme_score": 235.85522967724654,
+      "negative_tail_to_shoulder_ratio": 2.227717301970051,
+      "positive_tail_to_shoulder_ratio": 2.7325940302964606,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 1.0970938797375118,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 23056,
@@ -1009,7 +2647,25 @@
     "population_standard_deviation": 0.008065303090190611,
     "population_skewness": 1.2284642400093078,
     "pearson_kurtosis": 89.65786312408129,
-    "excess_kurtosis": 86.65786312408129
+    "excess_kurtosis": 86.65786312408129,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -3.886222839355469e-05,
+      "mad_estimate": 0.0019752979278564453,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.08856577148438052,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.10681904296870925,
+      "negative_extreme_score": 90.94761617380809,
+      "positive_extreme_score": 227.43789981894992,
+      "negative_tail_to_shoulder_ratio": 2.029311079325375,
+      "positive_tail_to_shoulder_ratio": 4.2042524734105875,
+      "negative_gap_score": 0.4943874471937236,
+      "positive_gap_score": 0.9887748943874471,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 23107,
@@ -1020,7 +2676,25 @@
     "population_standard_deviation": 0.008910176123256142,
     "population_skewness": 0.11592110515632106,
     "pearson_kurtosis": 14.343000623869209,
-    "excess_kurtosis": 11.343000623869209
+    "excess_kurtosis": 11.343000623869209,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 2.4437904357910156e-06,
+      "mad_estimate": 0.002489626407623291,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.07098764648438052,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.08514780273435463,
+      "negative_extreme_score": 51.582202111613874,
+      "positive_extreme_score": 64.5245756422227,
+      "negative_tail_to_shoulder_ratio": 1.8089906921275298,
+      "positive_tail_to_shoulder_ratio": 1.886680489131198,
+      "negative_gap_score": 1.1767578826402356,
+      "positive_gap_score": 0.39225262754674517,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 23152,
@@ -1031,7 +2705,25 @@
     "population_standard_deviation": 0.009191010759716007,
     "population_skewness": 5.540538398751804,
     "pearson_kurtosis": 102.78083731724581,
-    "excess_kurtosis": 99.78083731724581
+    "excess_kurtosis": 99.78083731724581,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 0.000110626220703125,
+      "mad_estimate": 0.001834869384765625,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.057373046875,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.1796875,
+      "negative_extreme_score": 54.48024948024948,
+      "positive_extreme_score": 251.14968814968816,
+      "negative_tail_to_shoulder_ratio": 1.739000597252638,
+      "positive_tail_to_shoulder_ratio": 2.5661816250663834,
+      "negative_gap_score": 0.2661122661122661,
+      "positive_gap_score": 3.1933471933471935,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 23273,
@@ -1042,7 +2734,25 @@
     "population_standard_deviation": 0.010031699886696464,
     "population_skewness": 43.69513967329912,
     "pearson_kurtosis": 4753.011434950615,
-    "excess_kurtosis": 4750.011434950615
+    "excess_kurtosis": 4750.011434950615,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 0.0003757476806640625,
+      "mad_estimate": 0.0016727447509765625,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.05859375,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.189453125,
+      "negative_extreme_score": 75.38996579247434,
+      "positive_extreme_score": 849.8004561003421,
+      "negative_tail_to_shoulder_ratio": 2.1385321991137562,
+      "positive_tail_to_shoulder_ratio": 7.51808213374222,
+      "negative_gap_score": 0.2919042189281642,
+      "positive_gap_score": 9.340935005701255,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 23583,
@@ -1053,7 +2763,25 @@
     "population_standard_deviation": 0.010770752408691714,
     "population_skewness": 1.224186853518192,
     "pearson_kurtosis": 24.519805687415563,
-    "excess_kurtosis": 21.519805687415563
+    "excess_kurtosis": 21.519805687415563,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 0.000354766845703125,
+      "mad_estimate": 0.002849578857421875,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.10107421875,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.13318623046870925,
+      "negative_extreme_score": 75.0053547523427,
+      "positive_extreme_score": 79.89692101740295,
+      "negative_tail_to_shoulder_ratio": 2.1072247922073037,
+      "positive_tail_to_shoulder_ratio": 1.7139958462737623,
+      "negative_gap_score": 0.6854082998661312,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 23915,
@@ -1064,7 +2792,25 @@
     "population_standard_deviation": 0.00807683243148013,
     "population_skewness": -39.219457059934854,
     "pearson_kurtosis": 3944.1969211435385,
-    "excess_kurtosis": 3941.1969211435385
+    "excess_kurtosis": 3941.1969211435385,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -8.296966552734375e-05,
+      "mad_estimate": 0.0015249252319335938,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.10809702148438052,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.048677416992177314,
+      "negative_extreme_score": 686.4546591619762,
+      "positive_extreme_score": 66.33583489681051,
+      "negative_tail_to_shoulder_ratio": 9.691257875318048,
+      "positive_tail_to_shoulder_ratio": 2.0745772408583525,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 0.32020012507817386,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 23929,
@@ -1075,7 +2821,25 @@
     "population_standard_deviation": 0.009979947075739718,
     "population_skewness": -1.743240408867787,
     "pearson_kurtosis": 29.45744035878705,
-    "excess_kurtosis": 26.45744035878705
+    "excess_kurtosis": 26.45744035878705,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -7.200241088867188e-05,
+      "mad_estimate": 0.002171039581298828,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.13025654296876105,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.09521484375,
+      "negative_extreme_score": 121.416428728311,
+      "positive_extreme_score": 86.84713375796179,
+      "negative_tail_to_shoulder_ratio": 2.0248170132914542,
+      "positive_tail_to_shoulder_ratio": 1.9787470412498562,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 2.2490665495277837,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 24766,
@@ -1086,7 +2850,25 @@
     "population_standard_deviation": 0.01025811198759488,
     "population_skewness": 1.4040618425487537,
     "pearson_kurtosis": 24.077236590616586,
-    "excess_kurtosis": 21.077236590616586
+    "excess_kurtosis": 21.077236590616586,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": -5.364418029785156e-05,
+      "mad_estimate": 0.0026013851165771484,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.080078125,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.130859375,
+      "negative_extreme_score": 72.43176610759784,
+      "positive_extreme_score": 93.30776280817524,
+      "negative_tail_to_shoulder_ratio": 2.3545659576876896,
+      "positive_tail_to_shoulder_ratio": 1.854127472959757,
+      "negative_gap_score": 0.0,
+      "positive_gap_score": 0.0,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   },
   {
     "neuron": 24836,
@@ -1097,6 +2879,24 @@
     "population_standard_deviation": 0.008768559747140582,
     "population_skewness": -2.5528277886265345,
     "pearson_kurtosis": 123.12086558105179,
-    "excess_kurtosis": 120.12086558105179
+    "excess_kurtosis": 120.12086558105179,
+    "robust_tail_metrics": {
+      "tail_k": 20,
+      "sample_count": 1026174,
+      "sample_stride": 15,
+      "median_estimate": 1.621246337890625e-05,
+      "mad_estimate": 0.0016469955444335938,
+      "lower_shoulder_quantile": 9.999999999998899e-05,
+      "lower_shoulder_estimate": -0.17555214843752207,
+      "upper_shoulder_quantile": 0.9999,
+      "upper_shoulder_estimate": 0.125,
+      "negative_extreme_score": 286.9907353792704,
+      "positive_extreme_score": 170.7556456282571,
+      "negative_tail_to_shoulder_ratio": 2.6922417002581542,
+      "positive_tail_to_shoulder_ratio": 2.250162145664034,
+      "negative_gap_score": 1.1858714533873769,
+      "positive_gap_score": 1.1858714533873769,
+      "estimation_note": "Top-k values and gaps are exact. Median, MAD, and shoulder quantiles use a deterministic strided sample."
+    }
   }
 ]

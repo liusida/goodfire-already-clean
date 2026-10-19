@@ -38,6 +38,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("scan_dir", type=Path)
     parser.add_argument("--chunk-rows", type=int, default=100_000)
     parser.add_argument("--histogram-bins", type=int, default=180)
+    parser.add_argument("--robust-sample-rows", type=int, default=1_000_000)
+    parser.add_argument("--tail-k", type=int, default=20)
+    parser.add_argument("--shoulder-quantile", type=float, default=0.9999)
     parser.add_argument("--recompute-stats", action="store_true")
     parser.add_argument("--recompute-histograms", action="store_true")
     parser.add_argument("--refresh-contexts", action="store_true")
@@ -126,17 +129,35 @@ def reconstruct_contexts(records: list[dict], summary: dict) -> list[dict]:
 
 
 def compute_stats(
-    scores: np.memmap, neurons: list[int], chunk_rows: int
+    scores: np.memmap,
+    neurons: list[int],
+    chunk_rows: int,
+    robust_sample_rows: int,
+    tail_k: int,
+    shoulder_quantile: float,
 ) -> list[dict]:
     rows, columns = scores.shape
+    if not 0.5 < shoulder_quantile < 1.0:
+        raise ValueError("shoulder_quantile must be between 0.5 and 1")
+    if not 1 <= tail_k < rows:
+        raise ValueError("tail_k must be positive and smaller than the score count")
+
     total = np.zeros(columns, dtype=np.float64)
     minimum = np.full(columns, np.inf)
     maximum = np.full(columns, -np.inf)
+    lowest = np.full((tail_k + 1, columns), np.inf, dtype=np.float32)
+    highest = np.full((tail_k + 1, columns), -np.inf, dtype=np.float32)
     for start in range(0, rows, chunk_rows):
-        chunk = np.asarray(scores[start : start + chunk_rows], dtype=np.float64)
-        total += chunk.sum(axis=0, dtype=np.float64)
-        minimum = np.minimum(minimum, chunk.min(axis=0))
-        maximum = np.maximum(maximum, chunk.max(axis=0))
+        chunk32 = np.asarray(scores[start : start + chunk_rows], dtype=np.float32)
+        total += chunk32.sum(axis=0, dtype=np.float64)
+        minimum = np.minimum(minimum, chunk32.min(axis=0))
+        maximum = np.maximum(maximum, chunk32.max(axis=0))
+        lowest_candidates = np.concatenate((lowest, chunk32), axis=0)
+        highest_candidates = np.concatenate((highest, chunk32), axis=0)
+        lowest = np.partition(lowest_candidates, tail_k, axis=0)[: tail_k + 1]
+        highest = np.partition(
+            highest_candidates, highest_candidates.shape[0] - tail_k - 1, axis=0
+        )[-(tail_k + 1) :]
     mean = total / rows
 
     sums_2 = np.zeros(columns, dtype=np.float64)
@@ -155,8 +176,36 @@ def compute_stats(
         skewness = (sums_3 / rows) / std**3
         pearson_kurtosis = (sums_4 / rows) / moment_2**2
 
-    return [
-        {
+    lowest.sort(axis=0)
+    highest.sort(axis=0)
+    stride = max(1, rows // robust_sample_rows)
+    robust_sample = np.asarray(scores[::stride], dtype=np.float32)
+    medians = np.median(robust_sample, axis=0).astype(np.float64)
+    mads = np.median(
+        np.abs(robust_sample - medians.astype(np.float32)), axis=0
+    ).astype(np.float64)
+    lower_shoulders, upper_shoulders = np.quantile(
+        robust_sample,
+        [1.0 - shoulder_quantile, shoulder_quantile],
+        axis=0,
+    )
+
+    def safe_ratio(numerator: float, denominator: float) -> float | None:
+        if not np.isfinite(numerator) or not np.isfinite(denominator) or denominator <= 0:
+            return None
+        return float(numerator / denominator)
+
+    result = []
+    for column, neuron in enumerate(neurons):
+        median = float(medians[column])
+        mad = float(mads[column])
+        bottom_k = lowest[:tail_k, column].astype(np.float64)
+        top_k = highest[-tail_k:, column].astype(np.float64)
+        bottom_k_median = float(np.median(bottom_k))
+        top_k_median = float(np.median(top_k))
+        lower_shoulder = float(lower_shoulders[column])
+        upper_shoulder = float(upper_shoulders[column])
+        result.append({
             "neuron": neuron,
             "count": rows,
             "minimum": float(minimum[column]),
@@ -166,9 +215,37 @@ def compute_stats(
             "population_skewness": float(skewness[column]),
             "pearson_kurtosis": float(pearson_kurtosis[column]),
             "excess_kurtosis": float(pearson_kurtosis[column] - 3.0),
-        }
-        for column, neuron in enumerate(neurons)
-    ]
+            "robust_tail_metrics": {
+                "tail_k": tail_k,
+                "sample_count": int(robust_sample.shape[0]),
+                "sample_stride": stride,
+                "median_estimate": median,
+                "mad_estimate": mad,
+                "lower_shoulder_quantile": 1.0 - shoulder_quantile,
+                "lower_shoulder_estimate": lower_shoulder,
+                "upper_shoulder_quantile": shoulder_quantile,
+                "upper_shoulder_estimate": upper_shoulder,
+                "negative_extreme_score": safe_ratio(median - bottom_k_median, mad),
+                "positive_extreme_score": safe_ratio(top_k_median - median, mad),
+                "negative_tail_to_shoulder_ratio": safe_ratio(
+                    median - bottom_k_median, median - lower_shoulder
+                ),
+                "positive_tail_to_shoulder_ratio": safe_ratio(
+                    top_k_median - median, upper_shoulder - median
+                ),
+                "negative_gap_score": safe_ratio(
+                    float(lowest[tail_k, column] - lowest[tail_k - 1, column]), mad
+                ),
+                "positive_gap_score": safe_ratio(
+                    float(highest[1, column] - highest[0, column]), mad
+                ),
+                "estimation_note": (
+                    "Top-k values and gaps are exact. Median, MAD, and shoulder "
+                    "quantiles use a deterministic strided sample."
+                ),
+            },
+        })
+    return result
 
 
 def compute_histograms(
@@ -265,7 +342,14 @@ def main() -> None:
         stats = json.loads(stats_path.read_text(encoding="utf-8"))
     else:
         scores = np.memmap(scores_path, mode="r", dtype="<f4", shape=shape)
-        stats = compute_stats(scores, neurons, args.chunk_rows)
+        stats = compute_stats(
+            scores,
+            neurons,
+            args.chunk_rows,
+            args.robust_sample_rows,
+            args.tail_k,
+            args.shoulder_quantile,
+        )
         stats_path.write_text(
             json.dumps(stats, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )
@@ -361,6 +445,7 @@ nav {{ position:sticky; top:0; height:100vh; overflow:auto; padding:14px; border
 main {{ padding:22px 26px 50px; min-width:0; }}
 .neuron-title {{ margin:0 0 14px; font-size:22px; }}
 .stats {{ display:grid; grid-template-columns:repeat(8,minmax(105px,1fr)); gap:8px; margin-bottom:20px; }}
+.metric-note {{ color:var(--muted); font-size:12px; margin:-10px 0 20px; }}
 .stat {{ background:var(--paper); border:1px solid var(--line); border-radius:8px; padding:10px 11px; }}
 .stat label {{ display:block; color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:.04em; margin-bottom:3px; }}
 .stat strong {{ font:600 14px ui-monospace,SFMono-Regular,monospace; }}
@@ -391,13 +476,15 @@ mark {{ padding:1px 2px; border-radius:3px; font:inherit; }} .negative mark {{ b
 const data=JSON.parse(document.getElementById('data').textContent); let active=data.neurons[0];
 const esc=s=>String(s).replace(/[&<>\"']/g,c=>({{'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}}[c]));
 const num=x=>Number(x).toLocaleString(undefined,{{maximumSignificantDigits:7}});
+const metric=x=>x==null?'n/a':Number(x).toLocaleString(undefined,{{maximumSignificantDigits:5}});
 const kurt=x=>Number(x).toLocaleString(undefined,{{maximumSignificantDigits:4}});
 function tabs(q=''){{ const box=document.getElementById('tabs'); box.innerHTML=''; const needle=q.trim();
  data.neurons.filter(n=>!needle||String(n).includes(needle)).forEach(n=>{{const b=document.createElement('button'); b.className='tab'+(n===active?' active':''); b.textContent='L'+data.summary.layer+' / N'+n+' (k='+kurt(data.stats[String(n)].excess_kurtosis)+')'; b.onclick=()=>{{active=n;tabs(document.getElementById('filter').value);render();}}; box.appendChild(b);}}); }}
 function card(r,side){{const parts=r.span_token_count||1; const byteRange=r.span_byte_start===r.span_byte_end?`${{r.span_byte_start}}`:`${{r.span_byte_start}}–${{r.span_byte_end}}`; const part=parts>1?` · component ${{r.span_token_part}}/${{parts}} of ${{JSON.stringify(r.display_span)}} · UTF-8 byte ${{byteRange}}/${{r.span_byte_count}} (${{r.token_bytes_hex}})`:''; return `<article class="card"><div class="card-head"><span class="rank">#${{r.rank}}</span><span class="score">${{num(r.activation)}}</span><span class="token">token ${{r.token_id}}</span><span class="piece">piece ${{esc(JSON.stringify(r.token_piece))}}${{esc(part)}}</span><span class="source">${{esc(r.pile_set_name||'Unknown')}} · doc ${{r.dataset_index}}, token ${{r.document_token_index}}</span></div><pre class="context">${{esc(r.left_context)}}<mark>${{esc(r.target_token)}}</mark>${{esc(r.right_context)}}</pre></article>`;}}
-function stat(label,value){{return `<div class="stat"><label>${{label}}</label><strong>${{num(value)}}</strong></div>`;}}
+function stat(label,value,formatter=num){{return `<div class="stat"><label>${{label}}</label><strong>${{formatter(value)}}</strong></div>`;}}
 function render(){{const key=String(active), s=data.stats[key], t=data.thresholds[key], e=data.extremes[key];
- document.getElementById('content').innerHTML=`<h2 class="neuron-title">Layer ${{data.summary.layer}} · Neuron ${{active}}</h2><section class="stats">${{stat('minimum',s.minimum)}}${{stat('negative cutoff',t.negative_cutoff_20th_smallest)}}${{stat('mean',s.mean)}}${{stat('std. deviation',s.population_standard_deviation)}}${{stat('skewness',s.population_skewness)}}${{stat('excess kurtosis',s.excess_kurtosis)}}${{stat('positive cutoff',t.positive_cutoff_20th_largest)}}${{stat('maximum',s.maximum)}}</section><section class="distribution"><h2>Activation distribution</h2><div class="chart-note">All ${{data.summary.tokens.toLocaleString()}} token positions · ${{data.summary.histogram_bins}} bins · logarithmic count axis</div><img class="histogram" src="${{esc(data.histogram_images[key])}}" alt="Activation histogram for neuron ${{active}}"></section><section class="columns"><div class="column negative"><h2>Negative extremes · lowest 20</h2>${{e.negative.map(r=>card(r,'negative')).join('')}}</div><div class="column positive"><h2>Positive extremes · highest 20</h2>${{e.positive.map(r=>card(r,'positive')).join('')}}</div></section>`; }}
+ const r=s.robust_tail_metrics;
+ document.getElementById('content').innerHTML=`<h2 class="neuron-title">Layer ${{data.summary.layer}} · Neuron ${{active}}</h2><section class="stats">${{stat('minimum',s.minimum)}}${{stat('negative cutoff',t.negative_cutoff_20th_smallest)}}${{stat('mean',s.mean)}}${{stat('std. deviation',s.population_standard_deviation)}}${{stat('skewness',s.population_skewness)}}${{stat('excess kurtosis',s.excess_kurtosis)}}${{stat('positive cutoff',t.positive_cutoff_20th_largest)}}${{stat('maximum',s.maximum)}}</section><section class="stats">${{stat('negative extreme / MAD',r.negative_extreme_score,metric)}}${{stat('positive extreme / MAD',r.positive_extreme_score,metric)}}${{stat('negative tail / shoulder',r.negative_tail_to_shoulder_ratio,metric)}}${{stat('positive tail / shoulder',r.positive_tail_to_shoulder_ratio,metric)}}${{stat('negative gap / MAD',r.negative_gap_score,metric)}}${{stat('positive gap / MAD',r.positive_gap_score,metric)}}${{stat('median estimate',r.median_estimate)}}${{stat('MAD estimate',r.mad_estimate)}}</section><div class="metric-note">Robust metrics use top ${{r.tail_k}} extremes on each side. Extremes and gaps are exact; median, MAD, and ${{(100*r.lower_shoulder_quantile).toFixed(2)}}% / ${{(100*r.upper_shoulder_quantile).toFixed(2)}}% shoulder quantiles use ${{r.sample_count.toLocaleString()}} deterministic samples (stride ${{r.sample_stride}}).</div><section class="distribution"><h2>Activation distribution</h2><div class="chart-note">All ${{data.summary.tokens.toLocaleString()}} token positions · ${{data.summary.histogram_bins}} bins · logarithmic count axis</div><img class="histogram" src="${{esc(data.histogram_images[key])}}" alt="Activation histogram for neuron ${{active}}"></section><section class="columns"><div class="column negative"><h2>Negative extremes · lowest 20</h2>${{e.negative.map(r=>card(r,'negative')).join('')}}</div><div class="column positive"><h2>Positive extremes · highest 20</h2>${{e.positive.map(r=>card(r,'positive')).join('')}}</div></section>`; }}
 document.getElementById('filter').addEventListener('input',e=>tabs(e.target.value)); tabs(); render();
 </script>
 </body></html>
