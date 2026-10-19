@@ -552,9 +552,64 @@ document.getElementById('filter').addEventListener('input',e=>tabs(e.target.valu
 """
     output_path = args.scan_dir / "neurons.html"
     output_path.write_text(document, encoding="utf-8")
+
+    tail_ranked_neurons = sorted(
+        neurons,
+        key=lambda neuron: (
+            stats_by_neuron[str(neuron)]["robust_tail_metrics"][
+                "unified_tail_score"
+            ]
+            is not None,
+            stats_by_neuron[str(neuron)]["robust_tail_metrics"][
+                "unified_tail_score"
+            ]
+            or float("-inf"),
+        ),
+        reverse=True,
+    )
+    figures = []
+    for rank, neuron in enumerate(tail_ranked_neurons, start=1):
+        robust = stats_by_neuron[str(neuron)]["robust_tail_metrics"]
+        score = robust["unified_tail_score"]
+        score_text = "n/a" if score is None else f"{score:.6g}"
+        direction = robust["unified_tail_direction"] or "n/a"
+        figures.append(
+            f'<figure><figcaption>#{rank} · L{summary["layer"]} / N{neuron} · '
+            f'normalized tail {score_text} · {html.escape(direction)}</figcaption>'
+            f'<img src="{html.escape(histogram_images[str(neuron)])}" '
+            f'alt="Activation histogram for neuron {neuron}" loading="lazy"></figure>'
+        )
+    gallery_document = f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{title} — histograms by normalized tail score</title>
+<style>
+:root {{ color-scheme:light; --ink:#182027; --muted:#64717d; --line:#dce3e8; --paper:#fff; --wash:#f4f7f8; }}
+* {{ box-sizing:border-box; }}
+body {{ margin:0; background:var(--wash); color:var(--ink); font:14px/1.45 system-ui,-apple-system,sans-serif; }}
+header {{ padding:22px 26px 17px; background:var(--paper); border-bottom:1px solid var(--line); }}
+h1 {{ margin:0 0 5px; font-size:22px; }} .sub {{ color:var(--muted); }}
+main {{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; padding:18px; }}
+figure {{ margin:0; overflow:hidden; background:var(--paper); border:1px solid var(--line); border-radius:9px; }}
+figcaption {{ padding:9px 12px; border-bottom:1px solid var(--line); font:600 13px ui-monospace,SFMono-Regular,monospace; }}
+img {{ display:block; width:100%; height:auto; }}
+@media (max-width:1000px) {{ main {{ grid-template-columns:1fr; padding:10px; }} }}
+</style>
+</head>
+<body>
+<header><h1>Layer {summary['layer']} histograms ranked by normalized zero-anchored tail score</h1><div class="sub">{summary['model_id']} · {summary['dataset_id']} · {summary['scored_tokens_per_neuron']:,} positions per neuron · descending order</div></header>
+<main>{''.join(figures)}</main>
+</body>
+</html>
+"""
+    gallery_path = args.scan_dir / "histograms_by_normalized_tail.html"
+    gallery_path.write_text(gallery_document, encoding="utf-8")
     print(f"Statistics: {stats_path.resolve()}")
     print(f"Histograms: {histogram_path.resolve()}")
     print(f"HTML: {output_path.resolve()}")
+    print(f"Histogram gallery: {gallery_path.resolve()}")
 
 
 if __name__ == "__main__":
