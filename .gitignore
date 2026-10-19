@@ -13,8 +13,13 @@ htmlcov/
 # Jupyter
 .ipynb_checkpoints/
 
-# Generated experiment artifacts
-outputs/
+# Generated experiment artifacts. Keep the published 100-neuron Layer 0
+# result bundle, except for its 6.15 GB raw score matrix.
+outputs/*
+!outputs/layer0/
+outputs/layer0/*
+!outputs/layer0/sample_100_seed_0_pile10k/
+outputs/layer0/sample_100_seed_0_pile10k/scores.f32
 *.log
 
 # Model weights and array dumps
