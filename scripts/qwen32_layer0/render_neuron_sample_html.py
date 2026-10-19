@@ -439,7 +439,10 @@ header {{ padding:24px 28px 18px; background:var(--paper); border-bottom:1px sol
 h1 {{ margin:0 0 5px; font-size:23px; }} .sub {{ color:var(--muted); }}
 .layout {{ display:grid; grid-template-columns:210px minmax(0,1fr); min-height:calc(100vh - 92px); }}
 nav {{ position:sticky; top:0; height:100vh; overflow:auto; padding:14px; border-right:1px solid var(--line); background:#f9fbfc; }}
-#filter {{ width:100%; padding:9px 10px; border:1px solid #cbd5dc; border-radius:7px; margin-bottom:10px; }}
+.nav-controls {{ position:sticky; top:-14px; z-index:3; margin:-14px -14px 4px; padding:14px 14px 4px; background:#f9fbfc; }}
+.control-label {{ display:block; color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:.04em; margin:0 0 4px; }}
+#sortMetric, #filter {{ width:100%; padding:9px 10px; border:1px solid #cbd5dc; border-radius:7px; background:white; }}
+#sortMetric, #filter {{ margin-bottom:10px; }}
 .tab {{ display:block; width:100%; border:0; background:transparent; text-align:left; padding:7px 10px; border-radius:6px; color:#34424e; cursor:pointer; }}
 .tab:hover {{ background:#eaf0f3; }} .tab.active {{ background:var(--accent); color:white; font-weight:650; }}
 main {{ padding:22px 26px 50px; min-width:0; }}
@@ -470,21 +473,34 @@ mark {{ padding:1px 2px; border-radius:3px; font:inherit; }} .negative mark {{ b
 </head>
 <body>
 <header><h1>{title}</h1><div class="sub">{summary['dataset_id']} · {summary['scored_tokens_per_neuron']:,} tokens per neuron · seed {summary['sample_seed']} · population moments</div></header>
-<div class="layout"><nav><input id="filter" placeholder="Find neuron…" autocomplete="off"><div id="tabs"></div></nav><main id="content"></main></div>
+<div class="layout"><nav><div class="nav-controls"><label class="control-label" for="sortMetric">Show and order by</label><select id="sortMetric"></select><input id="filter" placeholder="Find neuron…" autocomplete="off"></div><div id="tabs"></div></nav><main id="content"></main></div>
 <script id="data" type="application/json">{payload_json}</script>
 <script>
-const data=JSON.parse(document.getElementById('data').textContent); let active=data.neurons[0];
+const data=JSON.parse(document.getElementById('data').textContent); let active=data.neurons[0], selectedMetric='excess_kurtosis';
 const esc=s=>String(s).replace(/[&<>\"']/g,c=>({{'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}}[c]));
 const num=x=>Number(x).toLocaleString(undefined,{{maximumSignificantDigits:7}});
 const metric=x=>x==null?'n/a':Number(x).toLocaleString(undefined,{{maximumSignificantDigits:5}});
-const kurt=x=>Number(x).toLocaleString(undefined,{{maximumSignificantDigits:4}});
-function tabs(q=''){{ const box=document.getElementById('tabs'); box.innerHTML=''; const needle=q.trim();
- data.neurons.filter(n=>!needle||String(n).includes(needle)).forEach(n=>{{const b=document.createElement('button'); b.className='tab'+(n===active?' active':''); b.textContent='L'+data.summary.layer+' / N'+n+' (k='+kurt(data.stats[String(n)].excess_kurtosis)+')'; b.onclick=()=>{{active=n;tabs(document.getElementById('filter').value);render();}}; box.appendChild(b);}}); }}
+const metricOptions=[
+ ['excess_kurtosis','Excess kurtosis','k',s=>s.excess_kurtosis],
+ ['absolute_skewness','Absolute skewness','|skew|',s=>Math.abs(s.population_skewness)],
+ ['skewness','Signed skewness','skew',s=>s.population_skewness],
+ ['negative_extreme_score','Negative extreme / MAD','neg extreme',s=>s.robust_tail_metrics.negative_extreme_score],
+ ['positive_extreme_score','Positive extreme / MAD','pos extreme',s=>s.robust_tail_metrics.positive_extreme_score],
+ ['negative_tail_to_shoulder_ratio','Negative tail / shoulder','neg tail',s=>s.robust_tail_metrics.negative_tail_to_shoulder_ratio],
+ ['positive_tail_to_shoulder_ratio','Positive tail / shoulder','pos tail',s=>s.robust_tail_metrics.positive_tail_to_shoulder_ratio],
+ ['negative_gap_score','Negative gap / MAD','neg gap',s=>s.robust_tail_metrics.negative_gap_score],
+ ['positive_gap_score','Positive gap / MAD','pos gap',s=>s.robust_tail_metrics.positive_gap_score]
+];
+const metricConfig=()=>metricOptions.find(option=>option[0]===selectedMetric);
+function tabs(q=''){{ const box=document.getElementById('tabs'); box.innerHTML=''; const needle=q.trim(), config=metricConfig();
+ [...data.neurons].filter(n=>!needle||String(n).includes(needle)).sort((a,b)=>{{const av=config[3](data.stats[String(a)]), bv=config[3](data.stats[String(b)]);if(av==null)return 1;if(bv==null)return -1;return bv-av||a-b;}}).forEach(n=>{{const b=document.createElement('button'), value=config[3](data.stats[String(n)]);b.className='tab'+(n===active?' active':'');b.textContent='L'+data.summary.layer+' / N'+n+' ('+config[2]+'='+metric(value)+')';b.onclick=()=>{{active=n;tabs(document.getElementById('filter').value);render();}};box.appendChild(b);}}); }}
 function card(r,side){{const parts=r.span_token_count||1; const byteRange=r.span_byte_start===r.span_byte_end?`${{r.span_byte_start}}`:`${{r.span_byte_start}}–${{r.span_byte_end}}`; const part=parts>1?` · component ${{r.span_token_part}}/${{parts}} of ${{JSON.stringify(r.display_span)}} · UTF-8 byte ${{byteRange}}/${{r.span_byte_count}} (${{r.token_bytes_hex}})`:''; return `<article class="card"><div class="card-head"><span class="rank">#${{r.rank}}</span><span class="score">${{num(r.activation)}}</span><span class="token">token ${{r.token_id}}</span><span class="piece">piece ${{esc(JSON.stringify(r.token_piece))}}${{esc(part)}}</span><span class="source">${{esc(r.pile_set_name||'Unknown')}} · doc ${{r.dataset_index}}, token ${{r.document_token_index}}</span></div><pre class="context">${{esc(r.left_context)}}<mark>${{esc(r.target_token)}}</mark>${{esc(r.right_context)}}</pre></article>`;}}
 function stat(label,value,formatter=num){{return `<div class="stat"><label>${{label}}</label><strong>${{formatter(value)}}</strong></div>`;}}
 function render(){{const key=String(active), s=data.stats[key], t=data.thresholds[key], e=data.extremes[key];
  const r=s.robust_tail_metrics;
  document.getElementById('content').innerHTML=`<h2 class="neuron-title">Layer ${{data.summary.layer}} · Neuron ${{active}}</h2><section class="stats">${{stat('minimum',s.minimum)}}${{stat('negative cutoff',t.negative_cutoff_20th_smallest)}}${{stat('mean',s.mean)}}${{stat('std. deviation',s.population_standard_deviation)}}${{stat('skewness',s.population_skewness)}}${{stat('excess kurtosis',s.excess_kurtosis)}}${{stat('positive cutoff',t.positive_cutoff_20th_largest)}}${{stat('maximum',s.maximum)}}</section><section class="stats">${{stat('negative extreme / MAD',r.negative_extreme_score,metric)}}${{stat('positive extreme / MAD',r.positive_extreme_score,metric)}}${{stat('negative tail / shoulder',r.negative_tail_to_shoulder_ratio,metric)}}${{stat('positive tail / shoulder',r.positive_tail_to_shoulder_ratio,metric)}}${{stat('negative gap / MAD',r.negative_gap_score,metric)}}${{stat('positive gap / MAD',r.positive_gap_score,metric)}}${{stat('median estimate',r.median_estimate)}}${{stat('MAD estimate',r.mad_estimate)}}</section><div class="metric-note">Robust metrics use top ${{r.tail_k}} extremes on each side. Extremes and gaps are exact; median, MAD, and ${{(100*r.lower_shoulder_quantile).toFixed(2)}}% / ${{(100*r.upper_shoulder_quantile).toFixed(2)}}% shoulder quantiles use ${{r.sample_count.toLocaleString()}} deterministic samples (stride ${{r.sample_stride}}).</div><section class="distribution"><h2>Activation distribution</h2><div class="chart-note">All ${{data.summary.tokens.toLocaleString()}} token positions · ${{data.summary.histogram_bins}} bins · logarithmic count axis</div><img class="histogram" src="${{esc(data.histogram_images[key])}}" alt="Activation histogram for neuron ${{active}}"></section><section class="columns"><div class="column negative"><h2>Negative extremes · lowest 20</h2>${{e.negative.map(r=>card(r,'negative')).join('')}}</div><div class="column positive"><h2>Positive extremes · highest 20</h2>${{e.positive.map(r=>card(r,'positive')).join('')}}</div></section>`; }}
+const selector=document.getElementById('sortMetric');metricOptions.forEach(option=>{{const node=document.createElement('option');node.value=option[0];node.textContent=option[1]+' (descending)';selector.appendChild(node);}});selector.value=selectedMetric;
+selector.addEventListener('change',e=>{{selectedMetric=e.target.value;tabs(document.getElementById('filter').value);}});
 document.getElementById('filter').addEventListener('input',e=>tabs(e.target.value)); tabs(); render();
 </script>
 </body></html>
