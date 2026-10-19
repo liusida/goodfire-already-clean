@@ -20,6 +20,9 @@ outputs/*
 outputs/layer0/*
 !outputs/layer0/sample_100_seed_0_pile10k/
 outputs/layer0/sample_100_seed_0_pile10k/scores.f32
+!outputs/blog500_pile1m/
+outputs/blog500_pile1m/*
+!outputs/blog500_pile1m/highest_lowest_report.html
 *.log
 
 # Model weights and array dumps
