@@ -152,6 +152,30 @@ Each prompt record contains an activation tensor shaped
 `[24, sequence_length, 3584]`, plus its tokenization and weekday-token position.
 A readable index without the large tensors is saved alongside it as JSON.
 
+## Audit the 500 blog neurons on one million Pile tokens
+
+`qwen3-32b-neuron-papers.csv` contains the 500 Qwen3-32B neurons linked from
+the blog gallery. They span all 64 transformer layers. Measure all of them in
+one Pile-10k corpus pass with:
+
+```bash
+uv run --no-sync python scripts/qwen32_blog500/audit_blog500_pile1m.py
+```
+
+The default run scores exactly 1,000,000 source tokens, retains the 20 most
+positive and 20 most negative occurrences for each neuron, and writes results
+to `outputs/blog500_pile1m/`. `neuron_metrics.csv` and `neuron_metrics.json`
+contain population skewness, Pearson and excess kurtosis, and the normalized
+zero-anchored tail score. `extremes.csv` and `extremes.jsonl` contain the 20,000
+ranked contexts. The exact 90th-percentile bulk normalization uses temporary
+per-layer float32 score matrices totaling about 2 GB; these are removed after
+a successful run unless `--keep-scores` is supplied.
+
+Because the catalog reaches Layer 63, the run loads the complete Qwen3-32B
+BF16 backbone rather than a truncated prefix. This requires roughly 64 GiB for
+parameters plus runtime overhead. Batch size and window length can be adjusted
+with `--batch-size` and `--window-tokens`; the defaults are 4 and 512.
+
 ## Minimal MLP distribution measurement
 
 Measure Layer 0 post-SwiGLU activations over exactly 10,000 sampled
