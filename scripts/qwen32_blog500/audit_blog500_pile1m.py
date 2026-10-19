@@ -379,6 +379,7 @@ def main() -> None:
                             else:
                                 heapq.heapreplace(heap, entry)
             scored_tokens += expected_batch_tokens
+            progress.update(expected_batch_tokens)
             total_windows += len(batch)
             batch = []
 
@@ -388,9 +389,13 @@ def main() -> None:
                 remaining = args.num_tokens - total_tokens
                 if remaining <= 0:
                     break
-                document_ids = tokenizer.encode(
-                    example["text"], add_special_tokens=False
-                )[:remaining]
+                # Some Pile documents exceed the model's advertised context length,
+                # but they are always split into short windows below. Suppress the
+                # tokenizer's whole-document warning; no oversized sequence is sent
+                # to the model.
+                document_ids = tokenizer(
+                    example["text"], add_special_tokens=False, verbose=False
+                )["input_ids"][:remaining]
                 if not document_ids:
                     continue
                 meta = example.get("meta") or {}
@@ -412,7 +417,6 @@ def main() -> None:
                     + "\n"
                 )
                 total_tokens += len(document_ids)
-                progress.update(len(document_ids))
                 new_start = 0
                 while new_start < len(document_ids):
                     window_start = max(0, new_start - args.overlap_tokens)
