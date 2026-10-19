@@ -1,0 +1,286 @@
+"""
+Demo: one long-lived process; guest scripts run in-process. Their normal
+Transformers model and tokenizer ``from_pretrained(...)`` calls are wrapped so
+the first load is cached by model id until the daemon exits. The task file needs
+no daemon imports.
+
+  Terminal A: uv run model_daemon.py          # same as: … serve
+              python model_daemon.py serve
+  Terminal B: python model_daemon.py run task.py --model org/name
+
+Optional: python model_daemon.py serve warmup.py  # warmup.py defines load_models() -> dict
+"""
+
+from __future__ import annotations
+
+import contextlib
+import errno
+import importlib.util
+import io
+import json
+import os
+import runpy
+import socket
+import struct
+import sys
+import traceback
+from pathlib import Path
+
+_HDR = struct.Struct("!I")
+
+
+def _recvn(sock: socket.socket, n: int) -> bytes:
+    buf = bytearray()
+    while len(buf) < n:
+        chunk = sock.recv(n - len(buf))
+        if not chunk:
+            raise ConnectionError("connection closed")
+        buf += chunk
+    return bytes(buf)
+
+
+def _send_msg(sock: socket.socket, obj: dict) -> None:
+    raw = json.dumps(obj).encode("utf-8")
+    sock.sendall(_HDR.pack(len(raw)) + raw)
+
+
+def _recv_msg(sock: socket.socket) -> dict:
+    (n,) = _HDR.unpack(_recvn(sock, _HDR.size))
+    return json.loads(_recvn(sock, n).decode("utf-8"))
+
+
+class _ConnStream(io.TextIOBase):
+    """Send each guest write to the client as a chunk (streaming)."""
+
+    encoding = "utf-8"
+
+    def __init__(self, conn: socket.socket, stream: str) -> None:
+        super().__init__()
+        self._conn = conn
+        self._stream = stream
+
+    def write(self, s: str) -> int:
+        if not s:
+            return 0
+        _send_msg(self._conn, {"type": "chunk", "stream": self._stream, "text": s})
+        return len(s)
+
+    def flush(self) -> None:
+        return None
+
+
+_MODEL_REGISTRY: dict = {}
+_TOKENIZER_REGISTRY: dict = {}
+_TRANSFORMERS_PATCHED = False
+
+
+def _ensure_transformers_cache_patch() -> None:
+    """Cache ordinary model and tokenizer loads made by guest scripts."""
+    global _TRANSFORMERS_PATCHED
+    if _TRANSFORMERS_PATCHED:
+        return
+    try:
+        from transformers import AutoModelForCausalLM, AutoTokenizer
+    except ImportError as e:
+        raise RuntimeError(
+            "need torch+transformers in the daemon env (uv sync)"
+        ) from e
+
+    original_model_loader = AutoModelForCausalLM.from_pretrained.__func__
+    original_tokenizer_loader = AutoTokenizer.from_pretrained.__func__
+
+    def _wrapped(cls, pretrained_model_name_or_path, *model_args, **kwargs):
+        key = str(pretrained_model_name_or_path)
+        if key in _MODEL_REGISTRY:
+            return _MODEL_REGISTRY[key]
+        print(f"load: {key!r} (AutoModelForCausalLM.from_pretrained) …", file=sys.stderr, flush=True)
+        model = original_model_loader(cls, pretrained_model_name_or_path, *model_args, **kwargs)
+        _MODEL_REGISTRY[key] = model
+        print(f"model cache: {list(_MODEL_REGISTRY)}", file=sys.stderr, flush=True)
+        return model
+
+    def _wrapped_tokenizer(cls, pretrained_model_name_or_path, *inputs, **kwargs):
+        key = str(pretrained_model_name_or_path)
+        if key in _TOKENIZER_REGISTRY:
+            return _TOKENIZER_REGISTRY[key]
+        tokenizer = original_tokenizer_loader(
+            cls, pretrained_model_name_or_path, *inputs, **kwargs
+        )
+        _TOKENIZER_REGISTRY[key] = tokenizer
+        print(f"tokenizer cache: {list(_TOKENIZER_REGISTRY)}", file=sys.stderr, flush=True)
+        return tokenizer
+
+    AutoModelForCausalLM.from_pretrained = classmethod(_wrapped)
+    AutoTokenizer.from_pretrained = classmethod(_wrapped_tokenizer)
+    _TRANSFORMERS_PATCHED = True
+
+
+def _load_models(loader_path: str) -> dict:
+    path = Path(loader_path).resolve()
+    spec = importlib.util.spec_from_file_location("user_loader", path)
+    if spec is None or spec.loader is None:
+        raise ImportError(loader_path)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    fn = getattr(mod, "load_models", None)
+    if not callable(fn):
+        raise TypeError(f"{path} needs def load_models() -> dict")
+    out = fn()
+    if not isinstance(out, dict):
+        raise TypeError("load_models() must return a dict")
+    return out
+
+
+def _run_guest(script_path: str, argv: list[str], conn: socket.socket) -> None:
+    path = Path(script_path).resolve()
+    if not path.is_file():
+        _send_msg(
+            conn,
+            {"type": "done", "ok": False, "error": f"not found: {path}"},
+        )
+        return
+
+    old_argv = sys.argv[:]
+    try:
+        _ensure_transformers_cache_patch()
+        sys.argv = argv
+        init = {
+            "__name__": "__main__",
+            "__file__": str(path),
+        }
+        out = _ConnStream(conn, "stdout")
+        err = _ConnStream(conn, "stderr")
+        with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
+            runpy.run_path(str(path), init_globals=init, run_name="__main__")
+        _send_msg(conn, {"type": "done", "ok": True})
+    except BaseException:
+        tb = traceback.format_exc()
+        try:
+            _send_msg(conn, {"type": "chunk", "stream": "stderr", "text": tb})
+        except OSError:
+            pass
+        _send_msg(conn, {"type": "done", "ok": False, "error": "script failed"})
+    finally:
+        sys.argv = old_argv
+
+
+def _serve(loader_path: str | None, host: str, port: int) -> None:
+    global _MODEL_REGISTRY
+    if loader_path:
+        initial = _load_models(loader_path)
+        _MODEL_REGISTRY = dict(initial)
+    else:
+        _MODEL_REGISTRY = {}
+    print(f"startup model cache: {list(_MODEL_REGISTRY)}", file=sys.stderr)
+
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    try:
+        sock.bind((host, port))
+    except OSError as e:
+        if e.errno == errno.EADDRINUSE:
+            print(
+                f"port {port} already in use (often another ModelDaemon).\n"
+                f"  ss -tlnp | grep ':{port}'\n"
+                f"  lsof -i TCP:{port}\n"
+                f"Stop that process, or use another port in both terminals, e.g.\n"
+                f"  MODEL_DAEMON_PORT=9876 uv run model_daemon.py",
+                file=sys.stderr,
+            )
+            raise SystemExit(1) from e
+        raise
+    sock.listen(4)
+    print(f"listening {host}:{port} (Ctrl+C to stop)", file=sys.stderr)
+    try:
+        while True:
+            conn, addr = sock.accept()
+            with conn:
+                try:
+                    conn.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
+                    msg = _recv_msg(conn)
+                    if msg.get("cmd") != "run":
+                        _send_msg(
+                            conn,
+                            {"type": "done", "ok": False, "error": "need cmd run"},
+                        )
+                        continue
+                    _run_guest(msg["script"], msg["argv"], conn)
+                except (ConnectionError, json.JSONDecodeError, OSError, KeyError) as e:
+                    print(f"{addr}: {e}", file=sys.stderr)
+    except KeyboardInterrupt:
+        print("", file=sys.stderr)
+    finally:
+        sock.close()
+        _MODEL_REGISTRY.clear()
+        _TOKENIZER_REGISTRY.clear()
+
+
+def _client(script: str, argv: list[str], host: str, port: int) -> int:
+    try:
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.connect((host, port))
+    except ConnectionRefusedError:
+        print("no server — start: python model_daemon.py serve", file=sys.stderr)
+        return 1
+    try:
+        sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
+        _send_msg(
+            sock,
+            {"cmd": "run", "script": str(Path(script).resolve()), "argv": argv},
+        )
+        while True:
+            reply = _recv_msg(sock)
+            t = reply.get("type")
+            if t == "chunk":
+                stream = reply.get("stream", "stdout")
+                text = reply.get("text", "")
+                if stream == "stderr":
+                    sys.stderr.write(text)
+                    sys.stderr.flush()
+                else:
+                    sys.stdout.write(text)
+                    sys.stdout.flush()
+            elif t == "done":
+                if not reply.get("ok"):
+                    err = reply.get("error")
+                    if err:
+                        print(err, file=sys.stderr)
+                return 0 if reply.get("ok") else 1
+            else:
+                print(f"unknown message: {reply!r}", file=sys.stderr)
+                return 1
+    except ConnectionError as e:
+        print(f"connection lost: {e}", file=sys.stderr)
+        return 1
+    finally:
+        sock.close()
+
+
+def main(argv: list[str] | None = None) -> int:
+    argv = list(argv if argv is not None else sys.argv[1:])
+    if len(argv) == 0:
+        argv = ["serve"]
+    if argv[0] not in ("serve", "run"):
+        print(__doc__.strip(), file=sys.stderr)
+        return 2
+
+    host = "127.0.0.1"
+    port = int(os.environ.get("MODEL_DAEMON_PORT", "9870"))
+
+    if argv[0] == "serve":
+        loader = argv[1] if len(argv) > 1 else None
+        _serve(loader, host, port)
+        return 0
+
+    if len(argv) < 2:
+        print(__doc__.strip(), file=sys.stderr)
+        return 2
+
+    script = argv[1]
+    rest = argv[2:]
+    guest_argv = [str(Path(script).resolve()), *rest]
+    return _client(script, guest_argv, host, port)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
