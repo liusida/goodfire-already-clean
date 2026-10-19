@@ -41,6 +41,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--robust-sample-rows", type=int, default=1_000_000)
     parser.add_argument("--tail-k", type=int, default=20)
     parser.add_argument("--shoulder-quantile", type=float, default=0.9999)
+    parser.add_argument("--bulk-absolute-quantile", type=float, default=0.90)
     parser.add_argument("--recompute-stats", action="store_true")
     parser.add_argument("--recompute-histograms", action="store_true")
     parser.add_argument("--refresh-contexts", action="store_true")
@@ -135,12 +136,15 @@ def compute_stats(
     robust_sample_rows: int,
     tail_k: int,
     shoulder_quantile: float,
+    bulk_absolute_quantile: float,
 ) -> list[dict]:
     rows, columns = scores.shape
     if not 0.5 < shoulder_quantile < 1.0:
         raise ValueError("shoulder_quantile must be between 0.5 and 1")
     if not 1 <= tail_k < rows:
         raise ValueError("tail_k must be positive and smaller than the score count")
+    if not 0.5 <= bulk_absolute_quantile < 1.0:
+        raise ValueError("bulk_absolute_quantile must be between 0.5 and 1")
 
     total = np.zeros(columns, dtype=np.float64)
     minimum = np.full(columns, np.inf)
@@ -189,6 +193,9 @@ def compute_stats(
         [1.0 - shoulder_quantile, shoulder_quantile],
         axis=0,
     )
+    bulk_absolute_scales = np.quantile(
+        np.abs(robust_sample), bulk_absolute_quantile, axis=0
+    )
 
     def safe_ratio(numerator: float, denominator: float) -> float | None:
         if not np.isfinite(numerator) or not np.isfinite(denominator) or denominator <= 0:
@@ -213,7 +220,19 @@ def compute_stats(
         )
         negative_zero_tail = max(0.0, -float(lowest[tail_k - 1, column]))
         positive_zero_tail = max(0.0, float(highest[1, column]))
-        unified_tail_score = max(negative_zero_tail, positive_zero_tail)
+        bulk_absolute_scale = float(bulk_absolute_scales[column])
+        negative_normalized_tail = safe_ratio(
+            negative_zero_tail, bulk_absolute_scale
+        )
+        positive_normalized_tail = safe_ratio(
+            positive_zero_tail, bulk_absolute_scale
+        )
+        unified_tail_score = (
+            max(negative_normalized_tail, positive_normalized_tail)
+            if negative_normalized_tail is not None
+            and positive_normalized_tail is not None
+            else None
+        )
         unified_tail_direction = (
             "positive" if positive_zero_tail >= negative_zero_tail else "negative"
         )
@@ -249,6 +268,10 @@ def compute_stats(
                 "positive_tail_to_shoulder_ratio": positive_tail_ratio,
                 "negative_zero_anchored_tail": negative_zero_tail,
                 "positive_zero_anchored_tail": positive_zero_tail,
+                "bulk_absolute_quantile": bulk_absolute_quantile,
+                "bulk_absolute_scale_estimate": bulk_absolute_scale,
+                "negative_normalized_zero_tail": negative_normalized_tail,
+                "positive_normalized_zero_tail": positive_normalized_tail,
                 "unified_tail_score": unified_tail_score,
                 "unified_tail_direction": unified_tail_direction,
                 "tail_asymmetry": tail_asymmetry,
@@ -368,6 +391,7 @@ def main() -> None:
             args.robust_sample_rows,
             args.tail_k,
             args.shoulder_quantile,
+            args.bulk_absolute_quantile,
         )
         stats_path.write_text(
             json.dumps(stats, indent=2, allow_nan=False) + "\n", encoding="utf-8"
@@ -503,7 +527,7 @@ const metricOptions=[
  ['excess_kurtosis','Excess kurtosis','k',s=>s.excess_kurtosis],
  ['absolute_skewness','Absolute skewness','|skew|',s=>Math.abs(s.population_skewness)],
  ['skewness','Signed skewness','skew',s=>s.population_skewness],
- ['unified_tail_score','Unified zero-anchored tail','tail |0|',s=>s.robust_tail_metrics.unified_tail_score],
+ ['unified_tail_score','Normalized zero-anchored tail','tail / bulk',s=>s.robust_tail_metrics.unified_tail_score],
  ['negative_extreme_score','Negative extreme / MAD','neg extreme',s=>s.robust_tail_metrics.negative_extreme_score],
  ['positive_extreme_score','Positive extreme / MAD','pos extreme',s=>s.robust_tail_metrics.positive_extreme_score],
  ['negative_tail_to_shoulder_ratio','Negative tail / shoulder','neg tail',s=>s.robust_tail_metrics.negative_tail_to_shoulder_ratio],
@@ -519,7 +543,7 @@ function stat(label,value,formatter=num){{return `<div class="stat"><label>${{la
 function textStat(label,value){{return `<div class="stat"><label>${{label}}</label><strong>${{esc(value==null?'n/a':value)}}</strong></div>`;}}
 function render(){{const key=String(active), s=data.stats[key], t=data.thresholds[key], e=data.extremes[key];
  const r=s.robust_tail_metrics;
- document.getElementById('content').innerHTML=`<h2 class="neuron-title">Layer ${{data.summary.layer}} · Neuron ${{active}}</h2><section class="stats">${{stat('minimum',s.minimum)}}${{stat('negative cutoff',t.negative_cutoff_20th_smallest)}}${{stat('mean',s.mean)}}${{stat('std. deviation',s.population_standard_deviation)}}${{stat('skewness',s.population_skewness)}}${{stat('excess kurtosis',s.excess_kurtosis)}}${{stat('positive cutoff',t.positive_cutoff_20th_largest)}}${{stat('maximum',s.maximum)}}</section><section class="stats">${{stat('unified tail from zero',r.unified_tail_score,metric)}}${{textStat('tail direction',r.unified_tail_direction)}}${{stat('zero-tail asymmetry',r.tail_asymmetry,metric)}}${{stat('negative tail from zero',r.negative_zero_anchored_tail,metric)}}${{stat('positive tail from zero',r.positive_zero_anchored_tail,metric)}}${{stat('negative tail / shoulder',r.negative_tail_to_shoulder_ratio,metric)}}${{stat('positive tail / shoulder',r.positive_tail_to_shoulder_ratio,metric)}}${{stat('negative extreme / MAD',r.negative_extreme_score,metric)}}${{stat('positive extreme / MAD',r.positive_extreme_score,metric)}}${{stat('negative gap / MAD',r.negative_gap_score,metric)}}${{stat('positive gap / MAD',r.positive_gap_score,metric)}}${{stat('median estimate',r.median_estimate)}}${{stat('MAD estimate',r.mad_estimate)}}</section><div class="metric-note">Unified tail score is max(−20th-lowest cutoff, 20th-highest cutoff, 0), anchored at zero; all top ${{r.tail_k}} occurrences on the winning side reach this magnitude. Zero-tail asymmetry ranges from −1 (negative) to +1 (positive). Shoulder ratios remain as separate diagnostics. Extremes and gaps are exact; median, MAD, and ${{(100*r.lower_shoulder_quantile).toFixed(2)}}% / ${{(100*r.upper_shoulder_quantile).toFixed(2)}}% shoulder quantiles use ${{r.sample_count.toLocaleString()}} deterministic samples (stride ${{r.sample_stride}}).</div><section class="distribution"><h2>Activation distribution</h2><div class="chart-note">All ${{data.summary.tokens.toLocaleString()}} token positions · ${{data.summary.histogram_bins}} bins · logarithmic count axis</div><img class="histogram" src="${{esc(data.histogram_images[key])}}" alt="Activation histogram for neuron ${{active}}"></section><section class="columns"><div class="column negative"><h2>Negative extremes · lowest 20</h2>${{e.negative.map(r=>card(r,'negative')).join('')}}</div><div class="column positive"><h2>Positive extremes · highest 20</h2>${{e.positive.map(r=>card(r,'positive')).join('')}}</div></section>`; }}
+ document.getElementById('content').innerHTML=`<h2 class="neuron-title">Layer ${{data.summary.layer}} · Neuron ${{active}}</h2><section class="stats">${{stat('minimum',s.minimum)}}${{stat('negative cutoff',t.negative_cutoff_20th_smallest)}}${{stat('mean',s.mean)}}${{stat('std. deviation',s.population_standard_deviation)}}${{stat('skewness',s.population_skewness)}}${{stat('excess kurtosis',s.excess_kurtosis)}}${{stat('positive cutoff',t.positive_cutoff_20th_largest)}}${{stat('maximum',s.maximum)}}</section><section class="stats">${{stat('normalized tail score',r.unified_tail_score,metric)}}${{textStat('tail direction',r.unified_tail_direction)}}${{stat('zero-tail asymmetry',r.tail_asymmetry,metric)}}${{stat('negative normalized tail',r.negative_normalized_zero_tail,metric)}}${{stat('positive normalized tail',r.positive_normalized_zero_tail,metric)}}${{stat('bulk |activation| q90',r.bulk_absolute_scale_estimate,metric)}}${{stat('negative raw tail',r.negative_zero_anchored_tail,metric)}}${{stat('positive raw tail',r.positive_zero_anchored_tail,metric)}}${{stat('negative tail / shoulder',r.negative_tail_to_shoulder_ratio,metric)}}${{stat('positive tail / shoulder',r.positive_tail_to_shoulder_ratio,metric)}}${{stat('negative extreme / MAD',r.negative_extreme_score,metric)}}${{stat('positive extreme / MAD',r.positive_extreme_score,metric)}}${{stat('negative gap / MAD',r.negative_gap_score,metric)}}${{stat('positive gap / MAD',r.positive_gap_score,metric)}}${{stat('median estimate',r.median_estimate)}}${{stat('MAD estimate',r.mad_estimate)}}</section><div class="metric-note">Normalized tail score divides max(−20th-lowest cutoff, 20th-highest cutoff, 0) by Q${{r.bulk_absolute_quantile.toFixed(2)}}(|activation|), preserving zero as the anchor while removing multiplicative neuron scale. All top ${{r.tail_k}} occurrences on the winning side reach the raw cutoff. Zero-tail asymmetry ranges from −1 (negative) to +1 (positive). Shoulder ratios remain as separate diagnostics. Extremes and gaps are exact; bulk scale, median, MAD, and shoulder quantiles use ${{r.sample_count.toLocaleString()}} deterministic samples (stride ${{r.sample_stride}}).</div><section class="distribution"><h2>Activation distribution</h2><div class="chart-note">All ${{data.summary.tokens.toLocaleString()}} token positions · ${{data.summary.histogram_bins}} bins · logarithmic count axis</div><img class="histogram" src="${{esc(data.histogram_images[key])}}" alt="Activation histogram for neuron ${{active}}"></section><section class="columns"><div class="column negative"><h2>Negative extremes · lowest 20</h2>${{e.negative.map(r=>card(r,'negative')).join('')}}</div><div class="column positive"><h2>Positive extremes · highest 20</h2>${{e.positive.map(r=>card(r,'positive')).join('')}}</div></section>`; }}
 const selector=document.getElementById('sortMetric');metricOptions.forEach(option=>{{const node=document.createElement('option');node.value=option[0];node.textContent=option[1]+' (descending)';selector.appendChild(node);}});selector.value=selectedMetric;
 selector.addEventListener('change',e=>{{selectedMetric=e.target.value;tabs(document.getElementById('filter').value);}});
 document.getElementById('filter').addEventListener('input',e=>tabs(e.target.value)); tabs(); render();
