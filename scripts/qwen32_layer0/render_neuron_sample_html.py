@@ -441,7 +441,23 @@ def main() -> None:
     for record in records:
         extremes[int(record["neuron"])][record["polarity"]].append(record)
 
+    logit_path = args.scan_dir / "logit_projection" / "results.json"
+    if not logit_path.exists():
+        raise FileNotFoundError(
+            f"Missing {logit_path}; run measure_logit_projection_kurtosis.py first"
+        )
+    logit_payload = json.loads(logit_path.read_text(encoding="utf-8"))
+    logit_by_neuron = {
+        int(row["neuron"]): row for row in logit_payload["neurons"]
+    }
+    if set(logit_by_neuron) != set(neurons):
+        raise RuntimeError("Logit-projection neurons do not match scan neurons")
+
     stats_by_neuron = {str(row["neuron"]): row for row in stats}
+    for neuron in neurons:
+        stats_by_neuron[str(neuron)]["logit_pearson_kurtosis"] = (
+            logit_by_neuron[neuron]["pearson_kurtosis"]
+        )
     display_neurons = sorted(
         neurons,
         key=lambda neuron: stats_by_neuron[str(neuron)]["excess_kurtosis"],
@@ -526,14 +542,8 @@ const metric=x=>x==null?'n/a':Number(x).toLocaleString(undefined,{{maximumSignif
 const metricOptions=[
  ['excess_kurtosis','Excess kurtosis','k',s=>s.excess_kurtosis],
  ['absolute_skewness','Absolute skewness','|skew|',s=>Math.abs(s.population_skewness)],
- ['skewness','Signed skewness','skew',s=>s.population_skewness],
  ['unified_tail_score','Normalized zero-anchored tail','tail / bulk',s=>s.robust_tail_metrics.unified_tail_score],
- ['negative_extreme_score','Negative extreme / MAD','neg extreme',s=>s.robust_tail_metrics.negative_extreme_score],
- ['positive_extreme_score','Positive extreme / MAD','pos extreme',s=>s.robust_tail_metrics.positive_extreme_score],
- ['negative_tail_to_shoulder_ratio','Negative tail / shoulder','neg tail',s=>s.robust_tail_metrics.negative_tail_to_shoulder_ratio],
- ['positive_tail_to_shoulder_ratio','Positive tail / shoulder','pos tail',s=>s.robust_tail_metrics.positive_tail_to_shoulder_ratio],
- ['negative_gap_score','Negative gap / MAD','neg gap',s=>s.robust_tail_metrics.negative_gap_score],
- ['positive_gap_score','Positive gap / MAD','pos gap',s=>s.robust_tail_metrics.positive_gap_score]
+ ['logit_pearson_kurtosis','Logit kurtosis','logit k',s=>s.logit_pearson_kurtosis]
 ];
 const metricConfig=()=>metricOptions.find(option=>option[0]===selectedMetric);
 function tabs(q=''){{ const box=document.getElementById('tabs'); box.innerHTML=''; const needle=q.trim(), config=metricConfig();
@@ -543,7 +553,7 @@ function stat(label,value,formatter=num){{return `<div class="stat"><label>${{la
 function textStat(label,value){{return `<div class="stat"><label>${{label}}</label><strong>${{esc(value==null?'n/a':value)}}</strong></div>`;}}
 function render(){{const key=String(active), s=data.stats[key], t=data.thresholds[key], e=data.extremes[key];
  const r=s.robust_tail_metrics;
- document.getElementById('content').innerHTML=`<h2 class="neuron-title">Layer ${{data.summary.layer}} · Neuron ${{active}}</h2><section class="stats">${{stat('minimum',s.minimum)}}${{stat('negative cutoff',t.negative_cutoff_20th_smallest)}}${{stat('mean',s.mean)}}${{stat('std. deviation',s.population_standard_deviation)}}${{stat('skewness',s.population_skewness)}}${{stat('excess kurtosis',s.excess_kurtosis)}}${{stat('positive cutoff',t.positive_cutoff_20th_largest)}}${{stat('maximum',s.maximum)}}</section><section class="stats">${{stat('normalized tail score',r.unified_tail_score,metric)}}${{textStat('tail direction',r.unified_tail_direction)}}${{stat('zero-tail asymmetry',r.tail_asymmetry,metric)}}${{stat('negative normalized tail',r.negative_normalized_zero_tail,metric)}}${{stat('positive normalized tail',r.positive_normalized_zero_tail,metric)}}${{stat('bulk |activation| q90',r.bulk_absolute_scale_estimate,metric)}}${{stat('negative raw tail',r.negative_zero_anchored_tail,metric)}}${{stat('positive raw tail',r.positive_zero_anchored_tail,metric)}}${{stat('negative tail / shoulder',r.negative_tail_to_shoulder_ratio,metric)}}${{stat('positive tail / shoulder',r.positive_tail_to_shoulder_ratio,metric)}}${{stat('negative extreme / MAD',r.negative_extreme_score,metric)}}${{stat('positive extreme / MAD',r.positive_extreme_score,metric)}}${{stat('negative gap / MAD',r.negative_gap_score,metric)}}${{stat('positive gap / MAD',r.positive_gap_score,metric)}}${{stat('median estimate',r.median_estimate)}}${{stat('MAD estimate',r.mad_estimate)}}</section><div class="metric-note">Normalized tail score divides max(−20th-lowest cutoff, 20th-highest cutoff, 0) by Q${{r.bulk_absolute_quantile.toFixed(2)}}(|activation|), preserving zero as the anchor while removing multiplicative neuron scale. All top ${{r.tail_k}} occurrences on the winning side reach the raw cutoff. Zero-tail asymmetry ranges from −1 (negative) to +1 (positive). Shoulder ratios remain as separate diagnostics. Extremes and gaps are exact; bulk scale, median, MAD, and shoulder quantiles use ${{r.sample_count.toLocaleString()}} deterministic samples (stride ${{r.sample_stride}}).</div><section class="distribution"><h2>Activation distribution</h2><div class="chart-note">All ${{data.summary.tokens.toLocaleString()}} token positions · ${{data.summary.histogram_bins}} bins · logarithmic count axis</div><img class="histogram" src="${{esc(data.histogram_images[key])}}" alt="Activation histogram for neuron ${{active}}"></section><section class="columns"><div class="column negative"><h2>Negative extremes · lowest 20</h2>${{e.negative.map(r=>card(r,'negative')).join('')}}</div><div class="column positive"><h2>Positive extremes · highest 20</h2>${{e.positive.map(r=>card(r,'positive')).join('')}}</div></section>`; }}
+ document.getElementById('content').innerHTML=`<h2 class="neuron-title">Layer ${{data.summary.layer}} · Neuron ${{active}}</h2><section class="stats">${{stat('minimum',s.minimum)}}${{stat('negative cutoff',t.negative_cutoff_20th_smallest)}}${{stat('mean',s.mean)}}${{stat('std. deviation',s.population_standard_deviation)}}${{stat('skewness',s.population_skewness)}}${{stat('excess kurtosis',s.excess_kurtosis)}}${{stat('logit kurtosis',s.logit_pearson_kurtosis)}}${{stat('positive cutoff',t.positive_cutoff_20th_largest)}}${{stat('maximum',s.maximum)}}</section><section class="stats">${{stat('normalized tail score',r.unified_tail_score,metric)}}${{textStat('tail direction',r.unified_tail_direction)}}${{stat('zero-tail asymmetry',r.tail_asymmetry,metric)}}${{stat('negative normalized tail',r.negative_normalized_zero_tail,metric)}}${{stat('positive normalized tail',r.positive_normalized_zero_tail,metric)}}${{stat('bulk |activation| q90',r.bulk_absolute_scale_estimate,metric)}}${{stat('negative raw tail',r.negative_zero_anchored_tail,metric)}}${{stat('positive raw tail',r.positive_zero_anchored_tail,metric)}}${{stat('negative tail / shoulder',r.negative_tail_to_shoulder_ratio,metric)}}${{stat('positive tail / shoulder',r.positive_tail_to_shoulder_ratio,metric)}}${{stat('negative extreme / MAD',r.negative_extreme_score,metric)}}${{stat('positive extreme / MAD',r.positive_extreme_score,metric)}}${{stat('negative gap / MAD',r.negative_gap_score,metric)}}${{stat('positive gap / MAD',r.positive_gap_score,metric)}}${{stat('median estimate',r.median_estimate)}}${{stat('MAD estimate',r.mad_estimate)}}</section><div class="metric-note">Normalized tail score divides max(−20th-lowest cutoff, 20th-highest cutoff, 0) by Q${{r.bulk_absolute_quantile.toFixed(2)}}(|activation|), preserving zero as the anchor while removing multiplicative neuron scale. Logit kurtosis is Pearson kurtosis over all vocabulary values from <code>lm_head.weight @ down_proj.weight[:, neuron]</code>, without final RMSNorm. All top ${{r.tail_k}} occurrences on the winning side reach the raw cutoff. Extremes and gaps are exact; bulk scale, median, MAD, and shoulder quantiles use ${{r.sample_count.toLocaleString()}} deterministic samples (stride ${{r.sample_stride}}).</div><section class="distribution"><h2>Activation distribution</h2><div class="chart-note">All ${{data.summary.tokens.toLocaleString()}} token positions · ${{data.summary.histogram_bins}} bins · logarithmic count axis</div><img class="histogram" src="${{esc(data.histogram_images[key])}}" alt="Activation histogram for neuron ${{active}}"></section><section class="columns"><div class="column negative"><h2>Negative extremes · lowest 20</h2>${{e.negative.map(r=>card(r,'negative')).join('')}}</div><div class="column positive"><h2>Positive extremes · highest 20</h2>${{e.positive.map(r=>card(r,'positive')).join('')}}</div></section>`; }}
 const selector=document.getElementById('sortMetric');metricOptions.forEach(option=>{{const node=document.createElement('option');node.value=option[0];node.textContent=option[1]+' (descending)';selector.appendChild(node);}});selector.value=selectedMetric;
 selector.addEventListener('change',e=>{{selectedMetric=e.target.value;tabs(document.getElementById('filter').value);}});
 document.getElementById('filter').addEventListener('input',e=>tabs(e.target.value)); tabs(); render();

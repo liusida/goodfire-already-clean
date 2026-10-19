@@ -20,9 +20,17 @@ outputs/*
 outputs/layer0/*
 !outputs/layer0/sample_100_seed_0_pile10k/
 outputs/layer0/sample_100_seed_0_pile10k/scores.f32
+!outputs/layer0/sample_100_seed_0_pile10k/logit_projection/
+!outputs/layer0/sample_100_seed_0_pile10k/logit_projection/**
 !outputs/blog500_pile1m/
 outputs/blog500_pile1m/*
 !outputs/blog500_pile1m/highest_lowest_report.html
+!outputs/blog500_pile1m/cleanliness_vs_normalized_zero_tail.png
+!outputs/blog500_pile1m/cleanliness_vs_excess_kurtosis.png
+!outputs/blog500_pile1m/cleanliness_vs_absolute_skewness.png
+!outputs/blog500_pile1m/l63_n960_prompt_probe.html
+!outputs/blog500_pile1m/l63_n960_suffix_ablation/
+!outputs/blog500_pile1m/l63_n960_suffix_ablation/*
 *.log
 
 # Model weights and array dumps

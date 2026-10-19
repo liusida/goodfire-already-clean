@@ -1,0 +1,22 @@
+removed_token_count,removed_token,first_retained_token,retained_token_count,target_token,target_activation,suffix
+0,,#,22, -,96.0,#NetNeutrality is STILL in danger - Click here to help. DEAL: For $28 -
+1,#,Net,21, -,83.5,NetNeutrality is STILL in danger - Click here to help. DEAL: For $28 -
+2,Net,Ne,20, -,79.5,Neutrality is STILL in danger - Click here to help. DEAL: For $28 -
+3,Ne,utr,19, -,82.0,utrality is STILL in danger - Click here to help. DEAL: For $28 -
+4,utr,ality,18, -,44.0,ality is STILL in danger - Click here to help. DEAL: For $28 -
+5,ality, is,17, -,47.75, is STILL in danger - Click here to help. DEAL: For $28 -
+6, is, STILL,16, -,49.0, STILL in danger - Click here to help. DEAL: For $28 -
+7, STILL, in,15, -,62.75, in danger - Click here to help. DEAL: For $28 -
+8, in, danger,14, -,59.25, danger - Click here to help. DEAL: For $28 -
+9, danger, -,13, -,46.75, - Click here to help. DEAL: For $28 -
+10, -, Click,12, -,81.5, Click here to help. DEAL: For $28 -
+11, Click, here,11, -,18.0, here to help. DEAL: For $28 -
+12, here, to,10, -,6.59375, to help. DEAL: For $28 -
+13, to, help,9, -,15.9375, help. DEAL: For $28 -
+14, help,.,8, -,0.380859375,. DEAL: For $28 -
+15,., DEAL,7, -,14.5625, DEAL: For $28 -
+16, DEAL,:,6, -,-0.220703125,: For $28 -
+17,:, For,5, -,-0.0927734375, For $28 -
+18, For, $,4, -,-0.15234375, $28 -
+19, $,2,3, -,-0.047607421875,28 -
+20,2,8,2, -,0.1279296875,8 -

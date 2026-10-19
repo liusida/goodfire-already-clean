@@ -1,0 +1,191 @@
+[
+  {
+    "removed_token_count": 0,
+    "removed_token": "",
+    "first_retained_token": "#",
+    "retained_token_count": 22,
+    "target_token": " -",
+    "target_activation": 96.0,
+    "suffix": "#NetNeutrality is STILL in danger - Click here to help. DEAL: For $28 -"
+  },
+  {
+    "removed_token_count": 1,
+    "removed_token": "#",
+    "first_retained_token": "Net",
+    "retained_token_count": 21,
+    "target_token": " -",
+    "target_activation": 83.5,
+    "suffix": "NetNeutrality is STILL in danger - Click here to help. DEAL: For $28 -"
+  },
+  {
+    "removed_token_count": 2,
+    "removed_token": "Net",
+    "first_retained_token": "Ne",
+    "retained_token_count": 20,
+    "target_token": " -",
+    "target_activation": 79.5,
+    "suffix": "Neutrality is STILL in danger - Click here to help. DEAL: For $28 -"
+  },
+  {
+    "removed_token_count": 3,
+    "removed_token": "Ne",
+    "first_retained_token": "utr",
+    "retained_token_count": 19,
+    "target_token": " -",
+    "target_activation": 82.0,
+    "suffix": "utrality is STILL in danger - Click here to help. DEAL: For $28 -"
+  },
+  {
+    "removed_token_count": 4,
+    "removed_token": "utr",
+    "first_retained_token": "ality",
+    "retained_token_count": 18,
+    "target_token": " -",
+    "target_activation": 44.0,
+    "suffix": "ality is STILL in danger - Click here to help. DEAL: For $28 -"
+  },
+  {
+    "removed_token_count": 5,
+    "removed_token": "ality",
+    "first_retained_token": " is",
+    "retained_token_count": 17,
+    "target_token": " -",
+    "target_activation": 47.75,
+    "suffix": " is STILL in danger - Click here to help. DEAL: For $28 -"
+  },
+  {
+    "removed_token_count": 6,
+    "removed_token": " is",
+    "first_retained_token": " STILL",
+    "retained_token_count": 16,
+    "target_token": " -",
+    "target_activation": 49.0,
+    "suffix": " STILL in danger - Click here to help. DEAL: For $28 -"
+  },
+  {
+    "removed_token_count": 7,
+    "removed_token": " STILL",
+    "first_retained_token": " in",
+    "retained_token_count": 15,
+    "target_token": " -",
+    "target_activation": 62.75,
+    "suffix": " in danger - Click here to help. DEAL: For $28 -"
+  },
+  {
+    "removed_token_count": 8,
+    "removed_token": " in",
+    "first_retained_token": " danger",
+    "retained_token_count": 14,
+    "target_token": " -",
+    "target_activation": 59.25,
+    "suffix": " danger - Click here to help. DEAL: For $28 -"
+  },
+  {
+    "removed_token_count": 9,
+    "removed_token": " danger",
+    "first_retained_token": " -",
+    "retained_token_count": 13,
+    "target_token": " -",
+    "target_activation": 46.75,
+    "suffix": " - Click here to help. DEAL: For $28 -"
+  },
+  {
+    "removed_token_count": 10,
+    "removed_token": " -",
+    "first_retained_token": " Click",
+    "retained_token_count": 12,
+    "target_token": " -",
+    "target_activation": 81.5,
+    "suffix": " Click here to help. DEAL: For $28 -"
+  },
+  {
+    "removed_token_count": 11,
+    "removed_token": " Click",
+    "first_retained_token": " here",
+    "retained_token_count": 11,
+    "target_token": " -",
+    "target_activation": 18.0,
+    "suffix": " here to help. DEAL: For $28 -"
+  },
+  {
+    "removed_token_count": 12,
+    "removed_token": " here",
+    "first_retained_token": " to",
+    "retained_token_count": 10,
+    "target_token": " -",
+    "target_activation": 6.59375,
+    "suffix": " to help. DEAL: For $28 -"
+  },
+  {
+    "removed_token_count": 13,
+    "removed_token": " to",
+    "first_retained_token": " help",
+    "retained_token_count": 9,
+    "target_token": " -",
+    "target_activation": 15.9375,
+    "suffix": " help. DEAL: For $28 -"
+  },
+  {
+    "removed_token_count": 14,
+    "removed_token": " help",
+    "first_retained_token": ".",
+    "retained_token_count": 8,
+    "target_token": " -",
+    "target_activation": 0.380859375,
+    "suffix": ". DEAL: For $28 -"
+  },
+  {
+    "removed_token_count": 15,
+    "removed_token": ".",
+    "first_retained_token": " DEAL",
+    "retained_token_count": 7,
+    "target_token": " -",
+    "target_activation": 14.5625,
+    "suffix": " DEAL: For $28 -"
+  },
+  {
+    "removed_token_count": 16,
+    "removed_token": " DEAL",
+    "first_retained_token": ":",
+    "retained_token_count": 6,
+    "target_token": " -",
+    "target_activation": -0.220703125,
+    "suffix": ": For $28 -"
+  },
+  {
+    "removed_token_count": 17,
+    "removed_token": ":",
+    "first_retained_token": " For",
+    "retained_token_count": 5,
+    "target_token": " -",
+    "target_activation": -0.0927734375,
+    "suffix": " For $28 -"
+  },
+  {
+    "removed_token_count": 18,
+    "removed_token": " For",
+    "first_retained_token": " $",
+    "retained_token_count": 4,
+    "target_token": " -",
+    "target_activation": -0.15234375,
+    "suffix": " $28 -"
+  },
+  {
+    "removed_token_count": 19,
+    "removed_token": " $",
+    "first_retained_token": "2",
+    "retained_token_count": 3,
+    "target_token": " -",
+    "target_activation": -0.047607421875,
+    "suffix": "28 -"
+  },
+  {
+    "removed_token_count": 20,
+    "removed_token": "2",
+    "first_retained_token": "8",
+    "retained_token_count": 2,
+    "target_token": " -",
+    "target_activation": 0.1279296875,
+    "suffix": "8 -"
+  }
+]
